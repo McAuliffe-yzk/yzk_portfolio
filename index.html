@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>闫子奇 | 不务正业的工科生</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #09090f;
+  --bg2: #0f0f18;
+  --surface: #161625;
+  --surface2: #1a1a30;
+  --accent: #8b7cff;
+  --accent2: #38bdf8;
+  --accent3: #fb7185;
+  --text: #ececf4;
+  --text2: #9494b8;
+  --text3: #68688a;
+  --glass: rgba(255,255,255,0.04);
+  --glass-hover: rgba(255,255,255,0.07);
+  --glass-border: rgba(255,255,255,0.08);
+  --glass-border-hover: rgba(139,124,255,0.25);
+  --radius: 16px;
+  --radius-sm: 10px;
+  --shadow: 0 8px 40px rgba(0,0,0,0.5);
+  --shadow-sm: 0 4px 16px rgba(0,0,0,0.3);
+  --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Noto Sans SC', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased; word-break: break-word; overflow-wrap: break-word;
+}
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg2); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
+
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  padding: 0 48px; height: 64px;
+  display: flex; justify-content: space-between; align-items: center;
+  background: transparent;
+  transition: all var(--transition);
+}
+nav.scrolled {
+  background: rgba(9,9,15,0.88);
+  backdrop-filter: blur(24px) saturate(1.4);
+  -webkit-backdrop-filter: blur(24px) saturate(1.4);
+  border-bottom: 1px solid var(--glass-border);
+  height: 56px;
+  box-shadow: var(--shadow-sm);
+}
+nav .logo {
+  font-weight: 700; font-size: 1.05rem; letter-spacing: 0.3px;
+  display: flex; align-items: center; gap: 8px;
+}
+nav .logo .logo-mark {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  display: inline-block; flex-shrink: 0;
+}
+nav .logo .brand-accent { color: var(--accent); }
+nav .logo .brand-sub { color: var(--text2); font-weight: 400; font-size: 0.7rem; margin-left: 4px; }
+nav .nav-links { display: flex; gap: 4px; flex-wrap: wrap; }
+nav .nav-links a {
+  color: var(--text2); text-decoration: none; font-size: 0.82rem;
+  padding: 6px 16px; border-radius: 8px; transition: all 0.3s ease;
+  white-space: nowrap; font-weight: 450;
+}
+nav .nav-links a:hover, nav .nav-links a.active { color: var(--text); background: var(--glass); }
+.menu-toggle { display: none; flex-direction: column; gap: 4px; cursor: pointer; background: none; border: none; padding: 4px; }
+.menu-toggle span { width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: 0.3s; }
+
+.hero {
+  min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  position: relative; text-align: center; padding: 100px 24px 60px;
+  overflow: hidden;
+}
+#particles-canvas { position: absolute; inset: 0; z-index: 0; display: block; pointer-events: none; }
+.hero-content { position: relative; z-index: 1; max-width: 880px; }
+.hero-badge {
+  display: inline-block; padding: 5px 18px; border-radius: 6px;
+  background: var(--glass); border: 1px solid var(--glass-border);
+  font-size: 0.75rem; color: var(--accent2); margin-bottom: 20px;
+  letter-spacing: 0.5px; font-weight: 450;
+}
+.hero h1 {
+  font-size: clamp(2.5rem, 7vw, 4.5rem); font-weight: 900;
+  background: linear-gradient(135deg, #d4d0ff 0%, var(--accent) 35%, var(--accent2) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; line-height: 1.15; margin-bottom: 6px;
+  letter-spacing: -0.02em;
+}
+.hero .hero-subname {
+  font-size: 0.95rem; color: var(--text2); margin-bottom: 16px; font-weight: 350;
+}
+.hero .hero-subname span { color: var(--accent2); }
+.hero .slogan {
+  font-size: clamp(1rem, 2vw, 1.35rem); color: var(--text2); font-weight: 300;
+  max-width: 600px; margin: 0 auto 28px; line-height: 1.6;
+}
+.hero .slogan em { color: var(--accent2); font-style: normal; }
+.hero .quick-info {
+  display: flex; gap: 24px; justify-content: center; flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+.hero .quick-info .info-item {
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+  padding: 0 8px;
+}
+.hero .quick-info .info-item .label {
+  font-size: 0.65rem; color: var(--text3); letter-spacing: 1px;
+  text-transform: uppercase; margin-bottom: 2px;
+}
+.hero .quick-info .info-item .value { font-size: 0.9rem; font-weight: 500; color: var(--text); }
+.hero .quick-info .info-item .value.small { font-size: 0.75rem; color: var(--text2); }
+.hero .tech-stack {
+  display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;
+  margin-bottom: 36px;
+}
+.tech-badge {
+  padding: 5px 16px; border-radius: 6px; font-size: 0.75rem;
+  background: var(--glass); border: 1px solid var(--glass-border);
+  color: var(--text2); transition: all 0.3s ease; cursor: default;
+  font-weight: 450;
+}
+.tech-badge:hover {
+  border-color: var(--accent); color: var(--accent); transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(139,124,255,0.2);
+}
+.hero .contact-row {
+  display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+}
+.contact-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 9px 22px; border-radius: 8px; font-size: 0.82rem;
+  text-decoration: none; font-weight: 500; transition: all 0.3s ease;
+  background: var(--glass); border: 1px solid var(--glass-border);
+  color: var(--text);
+}
+.contact-btn:hover {
+  background: var(--glass-hover); border-color: var(--glass-border-hover);
+  transform: translateY(-2px); box-shadow: var(--shadow-sm);
+}
+.contact-btn.primary {
+  background: linear-gradient(135deg, var(--accent), #a855f7);
+  border: none; color: #fff;
+}
+.contact-btn.primary:hover {
+  background: linear-gradient(135deg, #a855f7, #c084fc);
+  box-shadow: 0 6px 30px rgba(124,58,237,0.25);
+}
+.hero-photo {
+  margin-top: 40px; max-width: 420px; margin-left: auto; margin-right: auto;
+}
+.hero-photo-img {
+  width: 100%; height: auto; display: block;
+  border-radius: 12px;
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 12px 50px rgba(139,124,255,0.12), 0 4px 16px rgba(0,0,0,0.3);
+  transition: all var(--transition);
+}
+.hero-photo-img:hover {
+  box-shadow: 0 16px 60px rgba(139,124,255,0.16), 0 6px 20px rgba(0,0,0,0.4);
+}
+
+.scroll-indicator {
+  position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
+  color: var(--text3); font-size: 1.2rem;
+  animation: bounce 2.5s ease-in-out infinite; cursor: pointer;
+  opacity: 0.5;
+}
+.scroll-indicator .arrow { line-height: 1; }
+@keyframes bounce {
+  0%,100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-5px); }
+}
+
+.section { padding: 72px 24px; position: relative; }
+.section-inner { max-width: 1140px; margin: 0 auto; }
+.section-header { text-align: center; margin-bottom: 44px; }
+.section-header .section-number {
+  display: inline-block; font-family: 'Space Grotesk', monospace;
+  font-size: 0.75rem; color: var(--accent); letter-spacing: 3px;
+  margin-bottom: 10px; font-weight: 600;
+}
+.section-header h2 {
+  font-size: clamp(1.6rem, 3.5vw, 2.5rem); font-weight: 700;
+  margin-bottom: 10px; letter-spacing: -0.01em;
+}
+.section-header h2 .highlight {
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.section-header p { color: var(--text2); font-size: 0.9rem; max-width: 480px; margin: 0 auto; }
+.section-divider {
+  width: 48px; height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  margin: 14px auto 0; border-radius: 2px; opacity: 0.8;
+}
+.section-alt { background: var(--bg2); }
+
+.sub-section-title {
+  font-size: 1.2rem; font-weight: 600; margin-bottom: 16px;
+  display: flex; align-items: center; gap: 12px; color: var(--text);
+  letter-spacing: -0.01em;
+}
+.sub-section-title .accent-line {
+  flex: 1; height: 1px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  opacity: 0.4;
+}
+
+.grid-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.grid-auto { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+.grid-books { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; }
+.grid-auto > *, .grid-2col > *, .grid-books > * { min-width: 0; }
+
+.card {
+  border-radius: var(--radius); overflow: hidden;
+  background: var(--surface); border: 1px solid var(--glass-border);
+  transition: all var(--transition);
+}
+.card:hover {
+  transform: translateY(-3px);
+  border-color: var(--glass-border-hover);
+  box-shadow: var(--shadow);
+}
+.card-info { padding: 20px 24px 24px; }
+.card-info h4 { font-size: 1rem; font-weight: 600; margin-bottom: 6px; }
+.card-info p { font-size: 0.82rem; color: var(--text2); line-height: 1.6; }
+.card-info .card-link {
+  display: inline-flex; align-items: center; gap: 4px;
+  margin-top: 10px; font-size: 0.8rem; color: var(--accent2);
+  text-decoration: none; font-weight: 450;
+}
+.card-info .card-link:hover { text-decoration: underline; }
+.card-img {
+  width: 100%; aspect-ratio: 16/9;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, var(--surface2), var(--surface));
+  position: relative; overflow: hidden;
+}
+.card-img .placeholder-art { font-size: 2.8rem; opacity: 0.25; }
+.card-img .card-img-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(0deg, rgba(22,22,37,0.7) 0%, transparent 45%);
+  pointer-events: none;
+}
+
+.glass-panel { display: flex; flex-direction: column; height: 100%; 
+  background: var(--glass); border: 1px solid var(--glass-border);
+  border-radius: var(--radius); padding: 28px;
+  transition: all var(--transition);
+}
+.glass-panel:hover {
+  border-color: var(--glass-border-hover);
+  box-shadow: var(--shadow-sm);
+}
+
+.dy-header { display: flex; align-items: center; gap: 16px; }
+
+.dy-showcase {
+  background: var(--glass); border: 1px solid var(--glass-border);
+  border-radius: var(--radius); padding: 0; overflow: hidden;
+}
+.dy-screenshot-wrap {
+  width: 100%; overflow: hidden;
+  border-bottom: 1px solid var(--glass-border);
+}
+.dy-screenshot {
+  width: 100%; height: auto; display: block;
+}
+.dy-info-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 24px; gap: 20px; flex-wrap: wrap;
+  border-bottom: 1px solid var(--glass-border);
+}
+.dy-text-info { flex: 1; min-width: 200px; }
+.dy-viral-row {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 10px; padding: 16px 20px;
+}
+.dy-name { font-weight: 600; font-size: 1rem; }
+.dy-handle { color: var(--text2); font-size: 0.82rem; }
+.dy-bio { font-size: 0.78rem; color: var(--text2); line-height: 1.5; margin-top: 4px; }
+.dy-stats {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; text-align: center;
+  margin-top: 4px;
+}
+.dy-stat .num {
+  font-size: 1.4rem; font-weight: 700;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.dy-stat .lbl { font-size: 0.72rem; color: var(--text2); margin-top: 1px; }
+
+
+
+.dy-entry {
+  background: var(--glass); border: 1px solid var(--glass-border);
+  border-radius: var(--radius-sm); padding: 12px 16px;
+  display: flex; gap: 10px; align-items: center; transition: all 0.3s ease;
+}
+.dy-entry:hover { border-color: var(--glass-border-hover); }
+.dy-entry .entry-rank {
+  font-family: 'Space Grotesk', monospace;
+  font-size: 1.4rem; font-weight: 700; color: var(--accent);
+  min-width: 30px; text-align: center;
+}
+.dy-entry .entry-info { flex: 1; }
+.dy-entry .entry-info .title { font-size: 0.88rem; font-weight: 500; }
+.dy-entry .entry-info .stats { font-size: 0.78rem; color: var(--text2); margin-top: 1px; }
+
+
+.novel-cover-wrap {
+  width: 100%; max-width: 240px; margin: 0 auto 20px;
+  border-radius: 8px; overflow: hidden;
+  box-shadow: 0 12px 40px rgba(139,124,255,0.1), 0 4px 12px rgba(0,0,0,0.3);
+  aspect-ratio: 0.74;
+}
+.novel-cover-img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.novel-card {
+  background: linear-gradient(135deg, rgba(139,124,255,0.06), rgba(6,182,212,0.04));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius); padding: 36px;
+  text-align: center;
+}
+.novel-card .novel-title { font-size: 1.4rem; font-weight: 700; margin-bottom: 6px; }
+.novel-card .novel-title .cn { color: var(--accent2); }
+.novel-card .novel-meta { color: var(--text2); font-size: 0.85rem; margin-bottom: 12px; }
+.novel-card .novel-desc {
+  color: var(--text2); font-size: 0.85rem;
+  max-width: 520px; margin: 0 auto 18px; line-height: 1.8;
+}
+.novel-card .novel-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 20px; border-radius: 8px;
+  background: var(--glass); border: 1px solid var(--glass-border);
+  color: var(--accent2); text-decoration: none; font-size: 0.82rem;
+  transition: all 0.3s ease; font-weight: 450;
+}
+.novel-card .novel-link:hover {
+  background: rgba(56,189,248,0.1);
+  border-color: var(--accent2); transform: translateY(-2px);
+}
+
+.timeline { position: relative; padding-left: 28px; }
+.timeline::before {
+  content: ''; position: absolute; left: 6px; top: 4px; bottom: 4px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--accent), var(--accent2), transparent);
+}
+.timeline-item {
+  position: relative; margin-bottom: 20px; padding-left: 22px;
+}
+.timeline-item:last-child { margin-bottom: 0; }
+.timeline-item::before {
+  content: ''; position: absolute; left: -25px; top: 6px;
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--accent); border: 2px solid var(--bg);
+  box-shadow: 0 0 0 1px rgba(108,99,255,0.3);
+}
+.timeline-item .tl-date {
+  font-size: 0.78rem; color: var(--accent2);
+  font-family: 'Space Grotesk', monospace; margin-top: 2px; margin-bottom: 0;
+  letter-spacing: 0.3px;
+}
+.timeline-item .tl-tag { display: inline-block; margin-top: 4px; margin-bottom: 4px; max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; 
+  display: inline-block; padding: 2px 10px; border-radius: 4px;
+  font-size: 0.68rem; background: rgba(139,124,255,0.12); color: var(--accent);
+  border: 1px solid rgba(139,124,255,0.2); margin-bottom: 6px; font-weight: 450;
+}
+.timeline-item h4 { font-size: 0.95rem; font-weight: 600; margin-top: 2px; margin-bottom: 0; }
+.timeline-item p { font-size: 0.82rem; color: var(--text2); line-height: 1.6; }
+.timeline-item p.detail-text { line-height: 1.8; }
+.timeline-item .tl-outcome {
+  font-size: 0.78rem; color: var(--accent2); margin-top: 4px; font-weight: 450;
+}
+
+.paper-card {
+  background: var(--glass); border: 1px solid var(--glass-border);
+  border-radius: var(--radius-sm); padding: 20px 24px;
+  transition: all 0.3s ease; margin-bottom: 12px;
+}
+.paper-card:last-child { margin-bottom: 0; }
+.paper-card:hover { border-color: var(--glass-border-hover); }
+.paper-card .paper-title { font-size: 0.92rem; font-weight: 500; margin-bottom: 6px; overflow-wrap: break-word; hyphens: auto; }
+.paper-card .paper-title em { font-style: italic; color: var(--text); }
+.paper-card .paper-subtitle { font-size: 0.8rem; color: var(--text2); margin-top: 4px; font-style: normal; }
+.paper-card .paper-authors { font-size: 0.78rem; color: var(--text2); margin-top: 2px; margin-bottom: 0; overflow-wrap: break-word; }
+.paper-card .paper-meta { display: flex; gap: 10px; flex-wrap: wrap; }
+.paper-card .paper-meta .tag {
+  padding: 2px 10px; border-radius: 4px; font-size: 0.68rem;
+  background: rgba(56,189,248,0.1); color: var(--accent2);
+  border: 1px solid rgba(56,189,248,0.18); font-weight: 450;
+}
+
+.section-gap { margin-bottom: 32px; }
+.section-gap-sm { margin-bottom: 24px; }
+
+.book-card { height: 100%; display: flex; flex-direction: column; align-items: center; 
+  background: var(--glass); border: 1px solid var(--glass-border);
+  border-radius: var(--radius); padding: 24px;
+  text-align: center; transition: all var(--transition);
+}
+.book-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--glass-border-hover);
+  box-shadow: var(--shadow);
+}
+.book-card .book-cover { flex-shrink: 0; 
+  width: 110px; height: 160px; margin: 0 auto 14px;
+  border-radius: 4px; display: flex; align-items: center; justify-content: center;
+  font-size: 2.2rem; position: relative; overflow: hidden;
+}
+.book-card .book-cover .cover-text {
+  font-size: 0.68rem; color: rgba(255,255,255,0.5);
+  letter-spacing: 2px; writing-mode: vertical-rl;
+}
+.book-card h4 { font-size: 0.95rem; font-weight: 600; margin-top: 2px; margin-bottom: 0; }
+.book-card p { font-size: 0.78rem; color: var(--text2); }
+
+.coding-card-body { padding: 24px; height: 100%; display: flex; flex-direction: column; }
+.coding-card-body .cc-icon { font-size: 1.8rem; margin-bottom: 14px; display: block; }
+.coding-card-body h4 { font-size: 1rem; font-weight: 600; margin-bottom: 8px; }
+.coding-card-body p { font-size: 0.82rem; color: var(--text2); line-height: 1.6; }
+.coding-card-body .cc-tags { display: flex; gap: 6px; margin-top: 14px; flex-wrap: wrap; }
+.coding-card-body .cc-tag {
+  padding: 3px 10px; border-radius: 4px; font-size: 0.68rem;
+  background: rgba(139,124,255,0.12); color: var(--accent);
+  border: 1px solid rgba(139,124,255,0.2); font-weight: 450;
+}
+
+.student-date {
+  font-size: 0.78rem; color: var(--accent2);
+  font-family: 'Space Grotesk', monospace; margin-bottom: 6px;
+}
+
+footer {
+  padding: 44px 24px; text-align: center;
+  border-top: 1px solid var(--glass-border);
+}
+footer p { color: var(--text2); font-size: 0.82rem; }
+footer .footer-links { display: flex; gap: 16px; justify-content: center; margin-top: 10px; }
+footer .footer-links a {
+  color: var(--text2); text-decoration: none;
+  font-size: 0.78rem; transition: color 0.3s;
+}
+footer .footer-links a:hover { color: var(--accent); }
+
+.reveal {
+  opacity: 0; transform: translateY(36px);
+  transition: all 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-d1 { transition-delay: 0.1s; }
+.reveal-d2 { transition-delay: 0.2s; }
+.reveal-d3 { transition-delay: 0.3s; }
+.reveal-d4 { transition-delay: 0.4s; }
+
+.glossy-overlay {
+  position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(139,124,255,0.06) 0%, transparent 60%);
+}
+
+@media (max-width: 900px) {
+  .grid-2col { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  nav { padding: 0 20px; }
+  nav .nav-links {
+    display: none; flex-direction: column; position: absolute;
+    top: 100%; left: 0; right: 0;
+    background: rgba(9,9,15,0.95); backdrop-filter: blur(20px) saturate(1.4);
+    -webkit-backdrop-filter: blur(20px) saturate(1.4);
+    padding: 12px 20px; border-bottom: 1px solid var(--glass-border);
+    gap: 2px;
+  }
+  nav .nav-links.open { display: flex; }
+  nav .nav-links a { padding: 10px 14px; border-radius: 6px; }
+  .menu-toggle { display: flex; }
+  .hero { padding: 80px 20px 50px; }
+  .section { padding: 60px 20px; }
+  .dy-stats { gap: 8px; }
+  .dy-stat .num { font-size: 1.2rem; }
+}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="logo">
+    <span class="logo-mark"></span>
+    闫子奇 <span class="brand-sub">/ Yan子坤 · AIGC PM</span>
+  </div>
+  <button class="menu-toggle" id="menuToggle" aria-label="菜单">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="navLinks">
+    <a href="#home" class="active">主页</a>
+    <a href="#unconventional">不务正业</a>
+    <a href="#conventional">不误正业</a>
+    <a href="#reading">阅读分享</a>
+  </div>
+</nav>
+
+<section id="home" class="hero">
+  <canvas id="particles-canvas"></canvas>
+  <div class="glossy-overlay" id="glossyOverlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge reveal reveal-d2">过去已过去，未来还未来</div>
+    <h1 class="reveal reveal-d2">闫子奇</h1>
+    <p class="hero-subname reveal reveal-d3">aka <span>Yan子坤</span></p>
+    <p class="slogan reveal reveal-d3">
+      AI 时代的 <em>跨界创作者</em><br>
+      写代码 · 做内容 · 写小说 · 做产品 · 全都要
+    </p>
+    <div class="quick-info reveal reveal-d4">
+      <div class="info-item">
+        <span class="label">公司 · 岗位</span>
+        <span class="value">浦光星奕</span>
+        <span class="value small">达人AIGC商业化产品经理</span>
+      </div>
+      <div class="info-item">
+        <span class="label">高校</span>
+        <span class="value">浙江大学 · 硕士</span>
+        <span class="value small">四川大学 · 学士 · 百佳学生</span>
+      </div>
+      <div class="info-item">
+        <span class="label">意向</span>
+        <span class="value">AIGC · 产品 · 运营</span>
+        <span class="value small">📍 上海</span>
+      </div>
+    </div>
+    <div class="tech-stack reveal reveal-d4">
+      <span class="tech-badge">Claude Code</span>
+      <span class="tech-badge">Codex</span>
+      <span class="tech-badge">Trae</span>
+      <span class="tech-badge">Python</span>
+      <span class="tech-badge">RunningHub</span>
+    </div>
+    <div class="contact-row reveal">
+      <a href="https://v.douyin.com/PHjxAmv0urs/" class="contact-btn primary" target="_blank" rel="noopener">📱 抖音 4.7w+</a>
+      <a href="mailto:scybyzk@163.com" class="contact-btn">scybyzk@163.com</a>
+      <a href="tel:+8613808294950" class="contact-btn">138-0829-4950</a>
+    </div>
+    <div class="hero-photo reveal">
+      <img src="avatar.jpg" alt="闫子坤" class="hero-photo-img">
+    </div>
+  </div>
+  <div class="scroll-indicator" onclick="document.getElementById('unconventional').scrollIntoView({behavior:'smooth'})">
+    <span class="arrow">▿</span>
+  </div>
+</section>
+
+<section id="unconventional" class="section">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-number">/ 01</div>
+      <h2>不务正业的 <span class="highlight">工科生</span></h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="sub-section-title reveal">
+      <span>🎨 AIGC 创作者</span>
+      <span class="accent-line"></span>
+    </div>
+    <div class="grid-auto section-gap-sm reveal">
+      <div class="card">
+        <div class="card-img" style="background:none;">
+          <img src="aigc-cover.jpg" alt="狂沙战血魔" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <div class="card-img-overlay"></div>
+        </div>
+        <div class="card-info">
+          <h4>AI 影视先导片 · 《偏光而行》</h4>
+          <p>基于个人原创玄幻小说自制 AI 影视先导片，全网播放量 10w+</p>
+          <a href="https://v.douyin.com/c1LjfhbDmns/" class="card-link" target="_blank" rel="noopener">查看作品 →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-section-title reveal">
+      <span>📱 个人内容产品 · 抖音</span>
+      <span class="accent-line"></span>
+    </div>
+    <div class="reveal section-gap-sm">
+      <div class="dy-showcase">
+        <div class="dy-screenshot-wrap">
+          <img src="douyin-preview.png" alt="抖音主页 Yan子坤" class="dy-screenshot">
+        </div>
+        <div class="dy-info-row">
+          <div class="dy-text-info">
+            <div class="dy-name">Yan子坤</div>
+            <div class="dy-handle">抖音号：ZikunZiqi926</div>
+            <div class="dy-bio">校园生活向自媒体 IP · 从 0 到 1 内容产品打造 · 欢迎商务合作</div>
+          </div>
+          <div class="dy-stats">
+            <div class="dy-stat"><div class="num">4.7w+</div><div class="lbl">抖音粉丝</div></div>
+            <div class="dy-stat"><div class="num">109.2w+</div><div class="lbl">总获赞</div></div>
+            <div class="dy-stat"><div class="num">600+</div><div class="lbl">原创视频</div></div>
+          </div>
+        </div>
+        <div class="dy-viral-row">
+          <div class="dy-entry">
+            <div class="entry-rank">🥇</div>
+            <div class="entry-info"><div class="title">最高播放爆款</div><div class="stats">播放 314.7w · 点赞 13.1w</div></div>
+          </div>
+          <div class="dy-entry">
+            <div class="entry-rank">📊</div>
+            <div class="entry-info"><div class="title">平均播放量级</div><div class="stats">2w – 10w+ / 条</div></div>
+          </div>
+          <div class="dy-entry">
+            <div class="entry-rank">⭐</div>
+            <div class="entry-info"><div class="title">抖音精选作品</div><div class="stats">近年 28 条作品入选</div></div>
+          </div>
+          <div class="dy-entry">
+            <div class="entry-rank">📺</div>
+            <div class="entry-info"><div class="title">《研一日记》专栏</div><div class="stats">50 集 · 总播放 500w+</div></div>
+          </div>
+        </div>
+        <a href="https://v.douyin.com/PHjxAmv0urs/" class="contact-btn" style="justify-content:center;margin-top:16px;" target="_blank" rel="noopener">
+          查看抖音主页 →
+        </a>
+      </div>
+    </div>
+
+    <div class="sub-section-title reveal">
+      <span>🤖 AI Coding 项目</span>
+      <span class="accent-line"></span>
+    </div>
+    <div class="grid-auto section-gap-sm reveal">
+      <div class="card coding-card-body">
+        <span class="cc-icon">🖼️</span>
+        <h4>批量调用的 AI 生图管线</h4>
+        <p>批量并行生图前端工具，支持 Image 2.0 等多模型调度，单次最高生成 100 张图片。集成参考图上传、提示词工程管理、生成记录追溯与图库存储，覆盖从创意到成片的全流程闭环。</p>
+        <div class="cc-tags">
+          <span class="cc-tag">批量创作</span>
+          <span class="cc-tag">创意速览</span>
+          <span class="cc-tag">并行调度</span>
+          <span class="cc-tag">图库管理</span>
+        </div>
+      </div>
+      <div class="card coding-card-body">
+        <span class="cc-icon">🎓</span>
+        <h4>OpaoAI 研学平台</h4>
+        <p>订阅制轻量化 AI 产品集成平台，聚焦科研办公场景的效能提升。集成优质科研办公 skills 和自研 AI 工具，解放生产力的同时给用户带来迭代性的洞察。内置多源模型 API 中转站，统一调度、按需分发，降低科研工作者的工具切换与模型选型成本。</p>
+        <div class="cc-tags">
+          <span class="cc-tag">科研增效</span>
+          <span class="cc-tag">API 聚合</span>
+          <span class="cc-tag">轻量化</span>
+          <span class="cc-tag">多模型调度</span>
+        </div>
+      </div>
+      <div class="card coding-card-body">
+        <span class="cc-icon">🧠</span>
+        <h4>创作者知识蒸馏</h4>
+        <p>基于 Yan子坤 往期爆款作品集的知识蒸馏系统，构建创作者数字分身。在主题定调、脚本撰写、风格统一与内容审查等环节提供一致性辅助，实现个人创作经验的模型化沉淀与复用。</p>
+        <div class="cc-tags">
+          <span class="cc-tag">数字分身</span>
+          <span class="cc-tag">风格统一</span>
+          <span class="cc-tag">内容审查</span>
+          <span class="cc-tag">知识沉淀</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-section-title reveal">
+      <span>📖 小说创作</span>
+      <span class="accent-line"></span>
+    </div>
+    <div class="reveal">
+      <div class="novel-card">
+        <div class="novel-cover-wrap">
+          <img src="novel-cover.png" alt="偏光而行" class="novel-cover-img">
+        </div>
+        <div class="novel-title"><span class="cn">《偏光而行》</span></div>
+        <div class="novel-meta">起点中文网 · 连载中 · 8w+ 人气</div>
+        <p class="novel-desc">
+          光与暗的边界，偏振与混沌的交织。一个关于选择、成长与突破的故事。<br>
+          当光的偏振方向改变，世界将呈现出不同的模样……
+        </p>
+        <a class="novel-link" href="https://www.qidian.com/book/1049190666/" target="_blank" rel="noopener">
+          📖 前往起点阅读 →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="conventional" class="section section-alt">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-number">/ 02</div>
+      <h2>不误正业的 <span class="highlight">工科生</span></h2>
+      <p>学术 · 项目 · 实干</p>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="sub-section-title reveal">
+      <span>📄 论文发表</span>
+      <span class="accent-line"></span>
+    </div>
+    <div class="reveal section-gap-sm">
+      <div class="paper-card">
+        <div class="paper-title">
+          <em>Photocatalysis for synergistic environmental remediation and H₂ production: A review</em>
+          <div class="paper-subtitle">光催化制氢协同环境治理：综述</div>
+        </div>
+        <div class="paper-authors">一作 · Chemical Engineering Journal · SCI一区</div>
+        <div class="paper-meta">
+          <span class="tag">IF 15.1</span>
+          <span class="tag">已见刊</span>
+        </div>
+      </div>
+      <div class="paper-card">
+        <div class="paper-title">
+          <em>A hybrid deep learning model with topology-aware attention for multi-station water quality prediction at basin scale</em>
+          <div class="paper-subtitle">拓扑感知注意力嵌入的流域多站点水质预测混合深度学习模型</div>
+        </div>
+        <div class="paper-authors">一作 · Journal of Water Process Engineering · SCI二区</div>
+        <div class="paper-meta">
+          <span class="tag">IF 6.7</span>
+          <span class="tag">已见刊</span>
+        </div>
+      </div>
+      <div class="paper-card">
+        <div class="paper-title">
+          <em>The synergistic effect of surface vacancies and heterojunctions for efficient photocatalysis: A review</em>
+        </div>
+        <div class="paper-authors">二作 · Separation and Purification Technology · SCI一区</div>
+        <div class="paper-meta">
+          <span class="tag">IF 9.136</span>
+          <span class="tag">已见刊</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-section-title reveal">
+      <span>🧪 科研项目</span>
+      <span class="accent-line"></span>
+    </div>
+    <div class="reveal section-gap-sm">
+      <div class="timeline">
+        <div class="timeline-item">
+          
+          
+          
+          
+          <h4>长江流域水质预测深度学习模型构建</h4>
+          <div class="tl-tag">建模工程师</div>
+          <div class="tl-date">2024.12 – 2027.03</div>
+          <p>AI for Science：设计 Transformer+LSTM 时空混合模型 Basinformer（R²=0.9304）；自主迭代 Basinformer 时空耦合模型（一作已见刊）。完成需求定义、模型构设、实验验证、论文产出的 AI 技术全流程。</p>
+          <div class="tl-outcome">📄 SCI 二区论文已见刊（一作）</div>
+        </div>
+        <div class="timeline-item">
+          
+          
+          
+          
+          <h4>浙江省"尖兵""领雁"研发攻关计划</h4>
+          <div class="tl-tag">解决方案经理</div>
+          <div class="tl-date">2024.09 – 2026.03</div>
+          <p>推动"流域水质预测预警智慧化平台 V1.0"设计与落地。结合 CNN 图像识别与 ArcGIS 空间分析构建污染源清单，独立完成 SWAT-QUAL2K-LSTM 耦合模型设计、构建和交付。</p>
+          <div class="tl-outcome">📟 软件著作权（排名第2）· 平台完成工程化交付</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-section-title reveal">
+      <span>🏆 商赛项目</span>
+      <span class="accent-line"></span>
+    </div>
+    <div class="reveal section-gap-sm">
+      <div class="timeline">
+        <div class="timeline-item">
+          <h4>第十届华为ICT大赛商业精英赛</h4>
+          <div class="tl-tag">队员 · 交付经理</div>
+          <div class="tl-date">2026.03 – 2026.04</div>
+          <p>围绕"S 市 L 运营商 W 区昇腾智算中心"建设项目，从整体架构、硬件部署、软件平台、交付实施、风险应急、运维体系六大维度打造综合交付方案。</p>
+          <div class="tl-outcome">🏆 区域赛二等奖</div>
+        </div>
+        <div class="timeline-item">
+          
+          
+          
+          
+          <h4>第18届"挑战杯"全国大学生课外学术科技作品竞赛</h4>
+          <div class="tl-tag">队员</div>
+          <div class="tl-date">2023.06 – 2023.10</div>
+          <p class="detail-text">
+            · 揭榜挂帅：基于中国社会科学院社会学研究所之命题"高校就业困难毕业生就业现状、瓶颈及对策研究"参赛。<br>
+            · 调研实践：基于4×5指标体系面向7省市38所高校12777名大学生、21所高校部门和7个省市级人社部门开展问卷调研和深度访谈，得有效问卷10707份、20万字访谈和12万字调研报告，开展就业类活动2951场次。<br>
+            · 对策分析：提出以高质量充分就业为核心"一三四"就业培育工作体系并结合就业素养测评模型整合就业活动。
+          </p>
+          <div class="tl-outcome">🏆 国家级特等奖</div>
+        </div>
+        <div class="timeline-item">
+          <h4>中航国际第五届航星计划课题挑战赛</h4>
+          <div class="tl-tag">队长</div>
+          <div class="tl-date">2022.04 – 2022.07</div>
+          <p class="detail-text">
+            · 命题展示：基于"飞亚达"品牌销售现状，设计新媒体领域的出圈计划，提出品牌和产品的新媒体宣传新方式。<br>
+            · 营销策划：作为队长基于抖音及飞亚达"心弦"系列腕表，提出"飞亚达抖音3tag活动"结合"航天文化"、"职场女性文化"和"飞亚达品牌文化"设计内外双循环体系链接情感和需求，形成可持续出圈方案实现品牌生态。
+          </p>
+          <div class="tl-outcome">🏆 二等奖</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-section-title reveal">
+      <span>👥 学生工作</span>
+      <span class="accent-line"></span>
+    </div>
+    <div class="reveal">
+      <div class="grid-auto">
+        <div class="card" style="padding:24px;">
+          <div class="student-date">2021.06 – 2024.06</div>
+          <h4 style="font-size:0.95rem;font-weight:600;margin-bottom:6px;">校团委创业就业促进部（与校学生会平级） · 副主席</h4>
+          <p style="font-size:0.82rem;color:var(--text2);line-height:1.8;">
+            · 执行协调：积极配合校团委第十七届、十八届"挑战杯"竞赛工作获优秀志愿者，所制视频于多个官媒平台推广。<br>
+            · 组织调研：担任"四川大学青年红色筑梦之旅"分队队长，深入四川省眉山、宜宾等各乡村振兴示范地实践调研。<br>
+            · 赛事筹办：主办校级"青创杯"青年创业就业能力挑战大赛，引导选手立足"双碳"政策思考企业治理文化建设。<br>
+            · 资源链接："比亚迪×四川大学"活动主要负责人，协调就业办、比亚迪和校团委三方合作，推进"对接-策划-宣推-执行-复盘"全流程，于校内举办为期两天的汽车集市活动，独立完成线上20万+宣传量和集市80+动态人流量；同期还与机械学院等关联学院开展了双选会、座谈会，辅以多种文创打卡活动以开拓大学生的新能源尖端视野。
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="reading" class="section">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-number">/ 03</div>
+      <h2>阅读 <span class="highlight">分享</span></h2>
+      <p>读书是性价比最高的自我投资</p>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="grid-books reveal">
+      <div class="book-card">
+        <div class="book-cover" style="background:linear-gradient(135deg,#2d1810,#4a3228);">
+          <span class="cover-text">剑来</span>
+        </div>
+        <h4>剑来</h4>
+        <p>烽火戏诸侯</p>
+      </div>
+      <div class="book-card">
+        <div class="book-cover" style="background:linear-gradient(135deg,#0a1f3d,#1a3a6a);">
+          <span class="cover-text">埃隆·马斯克传</span>
+        </div>
+        <h4>埃隆·马斯克传</h4>
+        <p>沃尔特·艾萨克森</p>
+      </div>
+      <div class="book-card">
+        <div class="book-cover" style="background:linear-gradient(135deg,#2a1a0a,#4a3520);">
+          <span class="cover-text">道德经</span>
+        </div>
+        <h4>道德经</h4>
+        <p>老子</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 闫子奇 · 不务正业的工科生 · 跨界创作者</p>
+  <div class="footer-links">
+    <a href="https://v.douyin.com/PHjxAmv0urs/" target="_blank" rel="noopener">抖音 @Yan子坤</a>
+    <a href="mailto:scybyzk@163.com">scybyzk@163.com</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const canvas = document.getElementById('particles-canvas');
+  const ctx = canvas.getContext('2d');
+  let w, h, particles = [];
+  function resize() { w=canvas.width=window.innerWidth; h=canvas.height=window.innerHeight; }
+  resize(); window.addEventListener('resize', resize);
+  const COUNT = 100;
+  for (let i=0;i<COUNT;i++) {
+    particles.push({
+      x:Math.random()*w, y:Math.random()*h,
+      vx:(Math.random()-0.5)*0.3, vy:(Math.random()-0.5)*0.3,
+      r:Math.random()*1.8+0.5, a:Math.random()*0.4+0.08
+    });
+  }
+  function draw() {
+    ctx.clearRect(0,0,w,h);
+    for (let p of particles) {
+      p.x+=p.vx; p.y+=p.vy;
+      if(p.x<0)p.x=w;if(p.x>w)p.x=0;if(p.y<0)p.y=h;if(p.y>h)p.y=0;
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(139,124,255,${p.a})`;
+      ctx.fill();
+    }
+    for (let i=0;i<particles.length;i++) {
+      for (let j=i+1;j<particles.length;j++) {
+        const dx=particles[i].x-particles[j].x;
+        const dy=particles[i].y-particles[j].y;
+        const dist=Math.sqrt(dx*dx+dy*dy);
+        if(dist<140) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x,particles[i].y);
+          ctx.lineTo(particles[j].x,particles[j].y);
+          ctx.strokeStyle=`rgba(139,124,255,${0.07*(1-dist/140)})`;
+          ctx.lineWidth=0.5;
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+document.addEventListener('mousemove', (e) => {
+  const o=document.getElementById('glossyOverlay');
+  if(o){o.style.setProperty('--mx',e.clientX+'px');o.style.setProperty('--my',e.clientY+'px');}
+});
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  setTimeout(() => {
+    document.querySelectorAll('.reveal').forEach(el => {
+      if(el.getBoundingClientRect().top < window.innerHeight) el.classList.add('visible');
+    });
+  }, 100);
+});
+
+const nav=document.getElementById('navbar');
+window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); });
+
+const sections=document.querySelectorAll('section[id]');
+const navLinks=document.querySelectorAll('.nav-links a');
+let tickingNav = false;
+window.addEventListener('scroll', () => {
+  if (!tickingNav) {
+    requestAnimationFrame(() => {
+      let cur='';
+      sections.forEach(s=>{const t=s.offsetTop-160;if(window.scrollY>=t)cur=s.id;});
+      navLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+cur);});
+      tickingNav=false;
+    });
+    tickingNav=true;
+  }
+});
+
+const menuToggle=document.getElementById('menuToggle');
+const navLinksEl=document.getElementById('navLinks');
+menuToggle.addEventListener('click',()=>{navLinksEl.classList.toggle('open');});
+navLinksEl.querySelectorAll('a').forEach(a=>{a.addEventListener('click',()=>navLinksEl.classList.remove('open'));});
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',(e)=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'});});
+});
+</script>
+</body>
+</html>
