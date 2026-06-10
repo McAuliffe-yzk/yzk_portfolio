@@ -372,12 +372,20 @@ nav .nav-links a:hover, nav .nav-links a.active { color: var(--text); background
   background: var(--accent); border: 2px solid var(--bg);
   box-shadow: 0 0 0 1px rgba(108,99,255,0.3);
 }
-.timeline-item .tl-date { display: inline-block; margin-left: 12px; 
+.timeline-item .tl-date {  
   font-size: 0.78rem; color: var(--accent2);
   font-family: 'Space Grotesk', monospace; margin-top: 2px; margin-bottom: 0;
   letter-spacing: 0.3px;
 }
-.timeline-item .tl-tag { display: inline-block; margin-top: 4px; margin-bottom: 0; max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; 
+.tl-meta {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 6px;
+}
+.tl-meta .tl-tag { margin: 0; }
+.tl-meta .tl-date { margin: 0; }
+.tl-sep {
+  color: var(--text3); font-size: 0.7rem; user-select: none;
+}
+.timeline-item .tl-tag { display: inline-block; margin: 0; max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; 
   display: inline-block; padding: 2px 10px; border-radius: 4px;
   font-size: 0.68rem; background: rgba(139,124,255,0.12); color: var(--accent);
   border: 1px solid rgba(139,124,255,0.2); margin-bottom: 6px; font-weight: 450;
@@ -759,8 +767,11 @@ footer .footer-links a:hover { color: var(--accent); }
           
           
           <h4>长江流域水质预测深度学习模型构建</h4>
+          <div class="tl-meta">
           <div class="tl-tag">建模工程师</div>
+          <span class="tl-sep">·</span>
           <div class="tl-date">2024.12 – 2027.03</div>
+        </div>
           <p>AI for Science：设计 Transformer+LSTM 时空混合模型 Basinformer（R²=0.9304）；自主迭代 Basinformer 时空耦合模型（一作已见刊）。完成需求定义、模型构设、实验验证、论文产出的 AI 技术全流程。</p>
           <div class="tl-outcome">📄 SCI 二区论文已见刊（一作）</div>
         </div>
@@ -770,8 +781,11 @@ footer .footer-links a:hover { color: var(--accent); }
           
           
           <h4>浙江省"尖兵""领雁"研发攻关计划</h4>
+          <div class="tl-meta">
           <div class="tl-tag">解决方案经理</div>
+          <span class="tl-sep">·</span>
           <div class="tl-date">2024.09 – 2026.03</div>
+        </div>
           <p>推动"流域水质预测预警智慧化平台 V1.0"设计与落地。结合 CNN 图像识别与 ArcGIS 空间分析构建污染源清单，独立完成 SWAT-QUAL2K-LSTM 耦合模型设计、构建和交付。</p>
           <div class="tl-outcome">📟 软件著作权（排名第2）· 平台完成工程化交付</div>
         </div>
@@ -786,8 +800,11 @@ footer .footer-links a:hover { color: var(--accent); }
       <div class="timeline">
         <div class="timeline-item">
           <h4>第十届华为ICT大赛商业精英赛</h4>
+          <div class="tl-meta">
           <div class="tl-tag">队员 · 交付经理</div>
+          <span class="tl-sep">·</span>
           <div class="tl-date">2026.03 – 2026.04</div>
+        </div>
           <p>围绕"S 市 L 运营商 W 区昇腾智算中心"建设项目，从整体架构、硬件部署、软件平台、交付实施、风险应急、运维体系六大维度打造综合交付方案。</p>
           <div class="tl-outcome">🏆 区域赛二等奖</div>
         </div>
@@ -797,8 +814,11 @@ footer .footer-links a:hover { color: var(--accent); }
           
           
           <h4>第18届"挑战杯"全国大学生课外学术科技作品竞赛</h4>
+          <div class="tl-meta">
           <div class="tl-tag">队员</div>
+          <span class="tl-sep">·</span>
           <div class="tl-date">2023.06 – 2023.10</div>
+        </div>
           <p class="detail-text">
             · 揭榜挂帅：基于中国社会科学院社会学研究所之命题"高校就业困难毕业生就业现状、瓶颈及对策研究"参赛。<br>
             · 调研实践：基于4×5指标体系面向7省市38所高校12777名大学生、21所高校部门和7个省市级人社部门开展问卷调研和深度访谈，得有效问卷10707份、20万字访谈和12万字调研报告，开展就业类活动2951场次。<br>
@@ -808,8 +828,11 @@ footer .footer-links a:hover { color: var(--accent); }
         </div>
         <div class="timeline-item">
           <h4>中航国际第五届航星计划课题挑战赛</h4>
+          <div class="tl-meta">
           <div class="tl-tag">队长</div>
+          <span class="tl-sep">·</span>
           <div class="tl-date">2022.04 – 2022.07</div>
+        </div>
           <p class="detail-text">
             · 命题展示：基于"飞亚达"品牌销售现状，设计新媒体领域的出圈计划，提出品牌和产品的新媒体宣传新方式。<br>
             · 营销策划：作为队长基于抖音及飞亚达"心弦"系列腕表，提出"飞亚达抖音3tag活动"结合"航天文化"、"职场女性文化"和"飞亚达品牌文化"设计内外双循环体系链接情感和需求，形成可持续出圈方案实现品牌生态。
@@ -827,8 +850,11 @@ footer .footer-links a:hover { color: var(--accent); }
       <div class="timeline">
         <div class="timeline-item">
           <h4>四川大学团委创业就业促进部（与校学生会平级）</h4>
+          <div class="tl-meta">
           <div class="tl-tag">副部长 → 部门主任 → 副主席</div>
+          <span class="tl-sep">·</span>
           <div class="tl-date">2021.06 – 2024.06</div>
+        </div>
           <p class="detail-text">
             · 执行协调：积极配合校团委第十七届、十八届"挑战杯"竞赛工作获优秀志愿者，所制视频于多个官媒平台推广。<br>
             · 组织调研：担任"四川大学青年红色筑梦之旅"分队队长，深入四川省眉山、宜宾等各乡村振兴示范地实践调研。<br>
