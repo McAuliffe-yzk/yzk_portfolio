@@ -285,6 +285,23 @@ nav .nav-links a:hover, nav .nav-links a.active { color: var(--text); background
   border-bottom: 1px solid var(--glass-border);
 }
 .dy-text-info { flex: 1; min-width: 200px; }
+.xhs-card {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 20px; gap: 16px; flex-wrap: wrap;
+  border-top: 1px solid var(--glass-border);
+}
+.xhs-header {
+  display: flex; align-items: center; gap: 12px;
+}
+.xhs-icon { font-size: 1.6rem; }
+.xhs-name { font-size: 0.88rem; font-weight: 500; }
+.xhs-handle { font-size: 0.78rem; color: var(--text2); }
+.xhs-link {
+  font-size: 0.8rem; color: var(--accent2); text-decoration: none; font-weight: 450;
+  white-space: nowrap;
+}
+.xhs-link:hover { text-decoration: underline; }
+
 .dy-viral-row {
   display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 10px; padding: 16px 20px;
@@ -560,7 +577,7 @@ footer .footer-links a:hover { color: var(--accent); }
       <span class="tech-badge">RunningHub</span>
     </div>
     <div class="contact-row reveal">
-      <a href="https://v.douyin.com/PHjxAmv0urs/" class="contact-btn primary" target="_blank" rel="noopener">📱 抖音 4.7w+</a>
+      
       <a href="mailto:scybyzk@163.com" class="contact-btn">scybyzk@163.com</a>
       <a href="tel:+8613808294950" class="contact-btn">138-0829-4950</a>
     </div>
@@ -641,6 +658,16 @@ footer .footer-links a:hover { color: var(--accent); }
         <a href="https://v.douyin.com/PHjxAmv0urs/" class="contact-btn" style="justify-content:center;margin-top:16px;" target="_blank" rel="noopener">
           查看抖音主页 →
         </a>
+      </div>
+      <div class="xhs-card">
+        <div class="xhs-header">
+          <span class="xhs-icon">📕</span>
+          <div>
+            <div class="xhs-name">小红书 · Yan子坤</div>
+            <div class="xhs-handle">粉丝 1w+</div>
+          </div>
+        </div>
+        <a href="https://www.xiaohongshu.com/user/profile/5be7f7716a9d040001637078" class="xhs-link" target="_blank" rel="noopener">查看小红书主页 →</a>
       </div>
     </div>
 
