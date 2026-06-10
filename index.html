@@ -157,49 +157,31 @@ nav .nav-links a:hover, nav .nav-links a.active { color: var(--text); background
   background: linear-gradient(135deg, #a855f7, #c084fc);
   box-shadow: 0 6px 30px rgba(124,58,237,0.25);
 }
-.photo-carousel {
-  margin-top: 40px; display: flex; align-items: center; justify-content: center;
-  gap: 12px; max-width: 820px; margin-left: auto; margin-right: auto;
+.photo-gallery {
+  margin-top: 40px; max-width: 720px; margin-left: auto; margin-right: auto;
 }
-.carousel-view {
-  flex: 1; overflow: hidden; position: relative; height: 440px;
-  display: flex; align-items: center; justify-content: center;
+.gallery-track {
+  display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory;
+  padding-bottom: 8px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin; scrollbar-color: var(--accent) transparent;
 }
-.carousel-track {
-  display: flex; align-items: center; gap: 0;
-  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-.carousel-img {
-  flex-shrink: 0; width: 360px; height: 420px; object-fit: cover;
-  border-radius: 12px;
+.gallery-track::-webkit-scrollbar { height: 4px; }
+.gallery-track::-webkit-scrollbar-track { background: transparent; }
+.gallery-track::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+.gallery-img {
+  flex-shrink: 0; width: 300px; height: 400px; object-fit: cover;
+  border-radius: 12px; scroll-snap-align: start;
   border: 1px solid var(--glass-border);
   box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  opacity: 0.5; transform: scale(0.75);
-  cursor: pointer;
+  transition: all var(--transition);
 }
-.carousel-img.active {
-  opacity: 1; transform: scale(1);
-  box-shadow: 0 14px 48px rgba(139,124,255,0.15), 0 6px 24px rgba(0,0,0,0.5);
-  z-index: 2;
-}
-.carousel-btn {
-  flex-shrink: 0; width: 44px; height: 44px; border-radius: 50%;
-  background: var(--glass); border: 1px solid var(--glass-border);
-  color: var(--text); font-size: 1.4rem; cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  transition: all 0.3s ease; user-select: none;
-  z-index: 3;
-}
-.carousel-btn:hover {
-  background: var(--glass-hover); border-color: var(--glass-border-hover);
+.gallery-img:hover {
+  transform: scale(1.02); box-shadow: 0 12px 40px rgba(139,124,255,0.2), 0 6px 20px rgba(0,0,0,0.4);
 }
 
 @media (max-width: 768px) {
-  .carousel-view { height: 340px; }
-  .carousel-img { width: 260px; height: 320px; }
-  .carousel-btn { width: 36px; height: 36px; font-size: 1.1rem; }
-  .photo-carousel { gap: 6px; }
+  .gallery-img { width: 240px; height: 320px; }
 }
 
 
@@ -616,24 +598,20 @@ footer .footer-links a:hover { color: var(--accent); }
       <a href="mailto:scybyzk@163.com" class="contact-btn">scybyzk@163.com</a>
       <a href="tel:+8613808294950" class="contact-btn">138-0829-4950</a>
     </div>
-    <div class="photo-carousel reveal" id="carousel">
-      <button class="carousel-btn carousel-prev" aria-label="上一张">‹</button>
-      <div class="carousel-view">
-        <div class="carousel-track" id="carouselTrack">
-          <img src="avatar.jpg" alt="闫子坤" class="carousel-img" data-index="0">
-          <img src="photo1.jpg" alt="个人照片 1" class="carousel-img" data-index="1">
-          <img src="photo2.jpg" alt="个人照片 2" class="carousel-img" data-index="2">
-          <img src="photo3.jpg" alt="个人照片 3" class="carousel-img" data-index="3">
-          <img src="photo4.jpg" alt="个人照片 4" class="carousel-img" data-index="4">
-          <img src="photo5.jpg" alt="个人照片 5" class="carousel-img" data-index="5">
-          <img src="photo6.jpg" alt="个人照片 6" class="carousel-img" data-index="6">
-          <img src="photo7.jpg" alt="个人照片 7" class="carousel-img" data-index="7">
-          <img src="photo8.jpg" alt="个人照片 8" class="carousel-img" data-index="8">
-          <img src="photo9.jpg" alt="个人照片 9" class="carousel-img" data-index="9">
-          <img src="photo10.jpg" alt="个人照片 10" class="carousel-img" data-index="10">
-        </div>
-      </div>
-      <button class="carousel-btn carousel-next" aria-label="下一张">›</button>
+    <div class="photo-gallery reveal">
+      <div class="gallery-track">
+      <img src="avatar.jpg" alt="闫子坤" class="gallery-img">
+      <img src="photo1.jpg" alt="个人照片 1" class="gallery-img">
+      <img src="photo2.jpg" alt="个人照片 2" class="gallery-img">
+      <img src="photo3.jpg" alt="个人照片 3" class="gallery-img">
+      <img src="photo4.jpg" alt="个人照片 4" class="gallery-img">
+      <img src="photo5.jpg" alt="个人照片 5" class="gallery-img">
+      <img src="photo6.jpg" alt="个人照片 6" class="gallery-img">
+      <img src="photo7.jpg" alt="个人照片 7" class="gallery-img">
+      <img src="photo8.jpg" alt="个人照片 8" class="gallery-img">
+      <img src="photo9.jpg" alt="个人照片 9" class="gallery-img">
+      <img src="photo10.jpg" alt="个人照片 10" class="gallery-img">
+    </div>
     </div>
   </div>
   <div class="scroll-indicator" onclick="document.getElementById('unconventional').scrollIntoView({behavior:'smooth'})">
@@ -1076,63 +1054,6 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click',(e)=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'});});
 });
 
-(function(){
-  const track = document.getElementById('carouselTrack');
-  if (!track) return;
-  const imgs = track.querySelectorAll('.carousel-img');
-  const total = imgs.length;
-  let current = 0;
-  let autoTimer;
-
-  function updateCarousel() {
-    imgs.forEach((img, i) => {
-      img.classList.toggle('active', i === current);
-    });
-    // Center the active image
-    const imgW = imgs[0].offsetWidth || 360;
-    const viewW = track.parentElement.offsetWidth;
-    const offset = viewW / 2 - imgW / 2 - current * imgW;
-    track.style.transform = `translateX(${offset}px)`;
-  }
-
-  function next() {
-    current = (current + 1) % total;
-    updateCarousel();
-  }
-
-  function prev() {
-    current = (current - 1 + total) % total;
-    updateCarousel();
-  }
-
-  document.querySelector('.carousel-next').addEventListener('click', () => { next(); resetTimer(); });
-  document.querySelector('.carousel-prev').addEventListener('click', () => { prev(); resetTimer(); });
-
-  // Swipe support
-  let startX = 0;
-  track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; });
-  track.addEventListener('touchend', e => {
-    const diff = startX - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 40) { diff > 0 ? next() : prev(); resetTimer(); }
-  });
-
-  // Click on non-active image to jump to it
-  imgs.forEach(img => {
-    img.addEventListener('click', () => {
-      current = parseInt(img.dataset.index);
-      updateCarousel(); resetTimer();
-    });
-  });
-
-  function resetTimer() {
-    clearInterval(autoTimer);
-    autoTimer = setInterval(next, 5000);
-  }
-
-  updateCarousel();
-  resetTimer();
-  window.addEventListener('resize', updateCarousel);
-})();
 </script>
 </body>
 </html>
