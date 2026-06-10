@@ -157,38 +157,35 @@ nav .nav-links a:hover, nav .nav-links a.active { color: var(--text); background
   background: linear-gradient(135deg, #a855f7, #c084fc);
   box-shadow: 0 6px 30px rgba(124,58,237,0.25);
 }
-.hero-photo {
-  margin-top: 40px; max-width: 420px; margin-left: auto; margin-right: auto;
+.photo-gallery {
+  margin-top: 40px; max-width: 720px; margin-left: auto; margin-right: auto;
 }
-.hero-photo-img {
-  width: 100%; height: auto; display: block;
-  border-radius: 12px;
+.gallery-track {
+  display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory;
+  padding-bottom: 8px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin; scrollbar-color: var(--accent) transparent;
+}
+.gallery-track::-webkit-scrollbar { height: 4px; }
+.gallery-track::-webkit-scrollbar-track { background: transparent; }
+.gallery-track::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+.gallery-img {
+  flex-shrink: 0; width: 300px; height: 400px; object-fit: cover;
+  border-radius: 12px; scroll-snap-align: start;
   border: 1px solid var(--glass-border);
-  box-shadow: 0 12px 50px rgba(139,124,255,0.12), 0 4px 16px rgba(0,0,0,0.3);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
   transition: all var(--transition);
 }
-.hero-photo-img:hover {
-  box-shadow: 0 16px 60px rgba(139,124,255,0.16), 0 6px 20px rgba(0,0,0,0.4);
+.gallery-img:hover {
+  transform: scale(1.02); box-shadow: 0 12px 40px rgba(139,124,255,0.2), 0 6px 20px rgba(0,0,0,0.4);
+}
+
+@media (max-width: 768px) {
+  .gallery-img { width: 240px; height: 320px; }
 }
 
 
-.photo-wall {
-  position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none;
-}
-.pw-img {
-  position: absolute; height: auto; border-radius: 8px;
-  opacity: 0; filter: blur(1px);
-  animation: pw-float var(--dur) ease-in-out infinite;
-  animation-delay: var(--delay);
-  will-change: transform, opacity;
-}
 
-@keyframes pw-float {
-  0%, 100% { transform: translate(0, 0) rotate(var(--rot)); opacity: var(--op); }
-  25% { transform: translate(calc(var(--dx) * 0.5), calc(var(--dy) * 0.3)) rotate(calc(var(--rot) + 1deg)); opacity: calc(var(--op) * 1.1); }
-  50% { transform: translate(var(--dx), calc(var(--dy) * 0.7)) rotate(calc(var(--rot) - 1deg)); opacity: calc(var(--op) * 0.9); }
-  75% { transform: translate(calc(var(--dx) * 0.3), var(--dy)) rotate(calc(var(--rot) + 0.5deg)); opacity: calc(var(--op) * 1.05); }
-}
 
 .scroll-indicator {
   position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
@@ -562,18 +559,7 @@ footer .footer-links a:hover { color: var(--accent); }
 
 <section id="home" class="hero">
   <canvas id="particles-canvas"></canvas>
-  <div class="photo-wall">
-      <img src="photo1.jpg" class="pw-img pw-img-1" style="top:43%;left:22%;width:166px;--rot:-2deg;--op:0.274;--dur:22s;--delay:3s;--dx:29px;--dy:-15px;" alt="" loading="lazy">
-      <img src="photo2.jpg" class="pw-img pw-img-2" style="top:40%;left:62%;width:168px;--rot:-10deg;--op:0.259;--dur:25s;--delay:0s;--dx:31px;--dy:-8px;" alt="" loading="lazy">
-      <img src="photo3.jpg" class="pw-img pw-img-3" style="top:48%;left:77%;width:267px;--rot:-3deg;--op:0.295;--dur:26s;--delay:0s;--dx:-20px;--dy:24px;" alt="" loading="lazy">
-      <img src="photo4.jpg" class="pw-img pw-img-4" style="top:30%;left:51%;width:231px;--rot:-6deg;--op:0.272;--dur:28s;--delay:3s;--dx:-29px;--dy:4px;" alt="" loading="lazy">
-      <img src="photo5.jpg" class="pw-img pw-img-5" style="top:9%;left:53%;width:248px;--rot:9deg;--op:0.276;--dur:19s;--delay:14s;--dx:28px;--dy:-13px;" alt="" loading="lazy">
-      <img src="photo6.jpg" class="pw-img pw-img-6" style="top:27%;left:18%;width:301px;--rot:-1deg;--op:0.333;--dur:29s;--delay:6s;--dx:-32px;--dy:-18px;" alt="" loading="lazy">
-      <img src="photo7.jpg" class="pw-img pw-img-7" style="top:45%;left:37%;width:234px;--rot:-8deg;--op:0.336;--dur:21s;--delay:12s;--dx:-5px;--dy:9px;" alt="" loading="lazy">
-      <img src="photo8.jpg" class="pw-img pw-img-8" style="top:43%;left:54%;width:201px;--rot:1deg;--op:0.286;--dur:26s;--delay:2s;--dx:37px;--dy:20px;" alt="" loading="lazy">
-      <img src="photo9.jpg" class="pw-img pw-img-9" style="top:13%;left:76%;width:222px;--rot:-5deg;--op:0.296;--dur:26s;--delay:7s;--dx:1px;--dy:-17px;" alt="" loading="lazy">
-      <img src="photo10.jpg" class="pw-img pw-img-10" style="top:17%;left:12%;width:240px;--rot:2deg;--op:0.277;--dur:24s;--delay:10s;--dx:-13px;--dy:21px;" alt="" loading="lazy">
-  </div>
+
   <div class="glossy-overlay" id="glossyOverlay"></div>
   <div class="hero-content">
     <div class="hero-badge reveal reveal-d2">过去已过去，未来还未来</div>
@@ -612,8 +598,20 @@ footer .footer-links a:hover { color: var(--accent); }
       <a href="mailto:scybyzk@163.com" class="contact-btn">scybyzk@163.com</a>
       <a href="tel:+8613808294950" class="contact-btn">138-0829-4950</a>
     </div>
-    <div class="hero-photo reveal">
-      <img src="avatar.jpg" alt="闫子坤" class="hero-photo-img">
+    <div class="photo-gallery reveal">
+      <div class="gallery-track">
+      <img src="avatar.jpg" alt="闫子坤" class="gallery-img">
+      <img src="photo1.jpg" alt="个人照片 1" class="gallery-img">
+      <img src="photo2.jpg" alt="个人照片 2" class="gallery-img">
+      <img src="photo3.jpg" alt="个人照片 3" class="gallery-img">
+      <img src="photo4.jpg" alt="个人照片 4" class="gallery-img">
+      <img src="photo5.jpg" alt="个人照片 5" class="gallery-img">
+      <img src="photo6.jpg" alt="个人照片 6" class="gallery-img">
+      <img src="photo7.jpg" alt="个人照片 7" class="gallery-img">
+      <img src="photo8.jpg" alt="个人照片 8" class="gallery-img">
+      <img src="photo9.jpg" alt="个人照片 9" class="gallery-img">
+      <img src="photo10.jpg" alt="个人照片 10" class="gallery-img">
+    </div>
     </div>
   </div>
   <div class="scroll-indicator" onclick="document.getElementById('unconventional').scrollIntoView({behavior:'smooth'})">
