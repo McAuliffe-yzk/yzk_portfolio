@@ -187,6 +187,26 @@ nav .nav-links a:hover, nav .nav-links a.active { color: var(--text); background
 
 
 
+
+.personality-tag {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  font-family: 'Space Grotesk', monospace;
+  font-size: clamp(4rem, 10vw, 9rem); font-weight: 900;
+  opacity: 0.04; pointer-events: none; user-select: none;
+  letter-spacing: 0.08em;
+}
+.personality-tag.left { left: 4%; color: #8b7cff; }
+.personality-tag.right { right: 4%; color: #38bdf8; }
+.personality-arrow {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  font-size: clamp(2rem, 5vw, 4rem); opacity: 0.05; pointer-events: none;
+  color: var(--text); user-select: none;
+}
+@media (max-width: 768px) {
+  .personality-tag { font-size: clamp(2rem, 8vw, 4rem); }
+  .personality-arrow { font-size: 1.5rem; }
+}
+
 .scroll-indicator {
   position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
   color: var(--text3); font-size: 1.2rem;
@@ -561,6 +581,9 @@ footer .footer-links a:hover { color: var(--accent); }
 
 <section id="home" class="hero">
   <canvas id="particles-canvas"></canvas>
+  <span class="personality-tag left">ENFJ</span>
+  <span class="personality-arrow">→</span>
+  <span class="personality-tag right">ISFP</span>
 
   <div class="glossy-overlay" id="glossyOverlay"></div>
   <div class="hero-content">
