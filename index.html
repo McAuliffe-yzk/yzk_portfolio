@@ -170,7 +170,7 @@ nav .nav-links a:hover, nav .nav-links a.active { color: var(--text); background
 .gallery-track::-webkit-scrollbar-track { background: transparent; }
 .gallery-track::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
 .gallery-img {
-  flex-shrink: 0; width: 300px; height: 400px; object-fit: cover;
+  flex-shrink: 0; height: 400px; width: auto; object-fit: contain; max-width: 90vw;
   border-radius: 12px; scroll-snap-align: start;
   border: 1px solid var(--glass-border);
   box-shadow: 0 8px 32px rgba(0,0,0,0.3);
