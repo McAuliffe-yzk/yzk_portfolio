@@ -189,6 +189,20 @@ nav .nav-links a:hover, nav .nav-links a.active { color: var(--text); background
 
 
 
+
+.hero-mbti {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  font-family: 'Space Grotesk', monospace;
+  font-size: clamp(5rem, 14vw, 14rem); font-weight: 900;
+  letter-spacing: 0.05em; opacity: 0.04; pointer-events: none; user-select: none;
+  line-height: 1;
+}
+.mbti-left  { left: 2%; color: var(--accent); }
+.mbti-right { right: 2%; color: var(--accent2); }
+@media (max-width: 768px) {
+  .hero-mbti { font-size: clamp(3rem, 10vw, 6rem); opacity: 0.05; }
+}
+
 .scroll-indicator {
   position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
   color: var(--text3); font-size: 1.2rem;
@@ -563,15 +577,13 @@ footer .footer-links a:hover { color: var(--accent); }
 
 <section id="home" class="hero">
   <canvas id="particles-canvas"></canvas>
+  <span class="hero-mbti mbti-left">ENFJ</span>
+  <span class="hero-mbti mbti-right">ISFP</span>
 
   <div class="glossy-overlay" id="glossyOverlay"></div>
   <div class="hero-content">
     <div class="hero-badge reveal reveal-d2">过去已过去，未来还未来</div>
-    <div class="name-row reveal reveal-d2">
-      <span class="name-label name-left">ENFJ</span>
-      <h1>闫子奇</h1>
-      <span class="name-label name-right">ISFP</span>
-    </div>
+    <h1 class="reveal reveal-d2">闫子奇</h1>
     <p class="hero-subname reveal reveal-d3">aka <span>Yan子坤</span></p>
     <p class="slogan reveal reveal-d3">
       AI 时代的 <em>跨界创作者</em><br>
@@ -636,24 +648,6 @@ footer .footer-links a:hover { color: var(--accent); }
     </div>
 
     <div class="sub-section-title reveal">
-      <span>🎨 AIGC 创作者</span>
-      <span class="accent-line"></span>
-    </div>
-    <div class="grid-auto section-gap-sm reveal">
-      <div class="card">
-        <div class="card-img" style="background:none;">
-          <img src="aigc-cover.jpg" alt="狂沙战血魔" style="width:100%;height:100%;object-fit:cover;display:block;">
-          <div class="card-img-overlay"></div>
-        </div>
-        <div class="card-info">
-          <h4>AI 影视先导片 · 《偏光而行》</h4>
-          <p>基于个人原创玄幻小说自制 AI 影视先导片，全网播放量 10w+</p>
-          <a href="https://v.douyin.com/c1LjfhbDmns/" class="card-link" target="_blank" rel="noopener">查看作品 →</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="sub-section-title reveal">
       <span>📱 个人内容产品 · 抖音</span>
       <span class="accent-line"></span>
     </div>
@@ -709,7 +703,43 @@ footer .footer-links a:hover { color: var(--accent); }
     </div>
 
     <div class="sub-section-title reveal">
-      <span>🤖 AI Coding 项目</span>
+      <span>🎨 AIGC 创作案例</span>
+      <span class="accent-line"></span>
+    </div>
+    <div class="grid-auto section-gap-sm reveal">
+      <div class="card">
+        <div class="card-img" style="background:none;">
+          <img src="aigc-cover.jpg" alt="狂沙战血魔" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <div class="card-img-overlay"></div>
+        </div>
+        <div class="card-info">
+          <h4>AI 影视先导片 · 《偏光而行》</h4>
+          <p>基于个人原创玄幻小说自制 AI 影视先导片，全网播放量 10w+</p>
+          <a href="https://v.douyin.com/c1LjfhbDmns/" class="card-link" target="_blank" rel="noopener">查看作品 →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-section-title reveal">
+      <span>🎨 AIGC 创作案例</span>
+      <span class="accent-line"></span>
+    </div>
+    <div class="grid-auto section-gap-sm reveal">
+      <div class="card">
+        <div class="card-img" style="background:none;">
+          <img src="aigc-cover.jpg" alt="狂沙战血魔" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <div class="card-img-overlay"></div>
+        </div>
+        <div class="card-info">
+          <h4>AI 影视先导片 · 《偏光而行》</h4>
+          <p>基于个人原创玄幻小说自制 AI 影视先导片，全网播放量 10w+</p>
+          <a href="https://v.douyin.com/c1LjfhbDmns/" class="card-link" target="_blank" rel="noopener">查看作品 →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-section-title reveal">
+      <span>🤖 个人 AI Coding 项目</span>
       <span class="accent-line"></span>
     </div>
     <div class="grid-auto section-gap-sm reveal">
