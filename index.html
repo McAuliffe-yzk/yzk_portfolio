@@ -4,32 +4,33 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="闫子奇（Yan子坤）的个人网站：AI 产品、内容创作、AIGC 实验与科研实践。">
-<meta name="theme-color" content="#09090f">
+<meta name="theme-color" content="#08080c">
 <meta property="og:title" content="闫子奇 | 不务正业的工科生">
 <meta property="og:description" content="AI 产品、内容创作、AIGC 实验与科研实践。">
 <meta property="og:type" content="website">
 <meta property="og:image" content="aigc-cover.jpg">
 <meta property="og:image:alt" content="《偏光而行》AI 影视先导片视觉">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2309090f'/%3E%3Ccircle cx='32' cy='32' r='14' fill='%238b7cff'/%3E%3Ccircle cx='38' cy='26' r='5' fill='%2338bdf8'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2308080c'/%3E%3Ccircle cx='32' cy='32' r='14' fill='%23d4a574'/%3E%3Ccircle cx='38' cy='26' r='5' fill='%23c9a962'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Playfair+Display:ital,opsz,wght@0,5..1200,400;0,5..1200,600;0,5..1200,700;0,5..1200,900;1,5..1200,400;1,5..1200,700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
-  --bg: #09090f;
-  --bg2: #0f0f18;
-  --surface: #161625;
-  --surface2: #1a1a30;
-  --accent: #8b7cff;
-  --accent2: #38bdf8;
-  --accent3: #fb7185;
+  --font-editorial: 'Playfair Display', 'Noto Sans SC', serif;
+  --bg: #08080c;
+  --bg2: #0f0e12;
+  --surface: #121116;
+  --surface2: #1a181d;
+  --accent: #d4a574;
+  --accent2: #c9a962;
+  --accent3: #e8947a;
   --text: #ececf4;
-  --text2: #9494b8;
-  --text3: #68688a;
-  --glass: rgba(255,255,255,0.04);
-  --glass-hover: rgba(255,255,255,0.07);
-  --glass-border: rgba(255,255,255,0.08);
-  --glass-border-hover: rgba(139,124,255,0.25);
+  --text2: #a8a8c4;
+  --text3: #6b6058;
+  --glass: rgba(212,165,116,0.04);
+  --glass-hover: rgba(212,165,116,0.07);
+  --glass-border: rgba(212,165,116,0.08);
+  --glass-border-hover: rgba(212,165,116,0.25);
   --radius: 16px;
   --radius-sm: 10px;
   --shadow: 0 8px 40px rgba(0,0,0,0.5);
@@ -84,7 +85,7 @@ nav .logo .logo-mark {
 }
 nav .logo .brand-accent { color: var(--accent); }
 nav .logo .brand-sub { color: var(--text2); font-weight: 400; font-size: 0.7rem; margin-left: 4px; }
-nav .nav-links { display: flex; gap: 4px; flex-wrap: wrap; }
+nav .nav-links { display: flex; gap: 8px; flex-wrap: wrap; }
 nav .nav-links a {
   color: var(--text2); text-decoration: none; font-size: 0.82rem;
   padding: 6px 16px; border-radius: 8px; transition: all 0.3s ease;
@@ -100,7 +101,7 @@ nav .nav-links a:hover, nav .nav-links a.active { color: var(--text); background
   overflow: hidden;
 }
 #particles-canvas { position: absolute; inset: 0; z-index: 0; display: block; pointer-events: none; }
-.hero-content { position: relative; z-index: 1; max-width: 880px; }
+.hero-content { position: relative; z-index: 1; max-width: 1280px; }
 .hero-badge {
   display: inline-block; padding: 5px 18px; border-radius: 6px;
   background: var(--glass); border: 1px solid var(--glass-border);
@@ -108,8 +109,9 @@ nav .nav-links a:hover, nav .nav-links a.active { color: var(--text); background
   letter-spacing: 0.5px; font-weight: 450;
 }
 .hero h1 {
+  font-family: var(--font-editorial); font-style: italic;
   font-size: clamp(2.5rem, 7vw, 4.5rem); font-weight: 900;
-  background: linear-gradient(135deg, #d4d0ff 0%, var(--accent) 35%, var(--accent2) 100%);
+  background: linear-gradient(135deg, #e8d5c0 0%, var(--accent) 35%, var(--accent2) 100%);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   background-clip: text; line-height: 1.15; margin-bottom: 6px;
   letter-spacing: -0.02em;
@@ -149,7 +151,7 @@ nav .nav-links a:hover, nav .nav-links a.active { color: var(--text); background
 }
 .tech-badge:hover {
   border-color: var(--accent); color: var(--accent); transform: translateY(-2px);
-  box-shadow: 0 4px 20px rgba(139,124,255,0.2);
+  box-shadow: 0 4px 20px rgba(212,165,116,0.2);
 }
 .hero .contact-row {
   display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
@@ -169,11 +171,11 @@ nav .nav-links a:hover, nav .nav-links a.active { color: var(--text); background
 .contact-btn.pending { color: var(--text3); border-style: dashed; cursor: default; }
 .pending-field { color: var(--text3); font-style: italic; }
 .contact-btn.primary {
-  background: linear-gradient(135deg, var(--accent), #a855f7);
+  background: linear-gradient(135deg, var(--accent), #c9a962);
   border: none; color: #fff;
 }
 .contact-btn.primary:hover {
-  background: linear-gradient(135deg, #a855f7, #c084fc);
+  background: linear-gradient(135deg, #c9a962, #c084fc);
   box-shadow: 0 6px 30px rgba(124,58,237,0.25);
 }
 .photo-gallery {
@@ -189,26 +191,19 @@ nav .nav-links a:hover, nav .nav-links a.active { color: var(--text); background
 .gallery-track::-webkit-scrollbar-track { background: transparent; }
 .gallery-track::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
 .gallery-img {
-  flex-shrink: 0; height: 400px; width: auto; object-fit: contain; max-width: 90vw;
+  flex-shrink: 0; height: 280px; width: auto; object-fit: contain; max-width: none;
   border-radius: 12px; scroll-snap-align: start;
   border: 1px solid var(--glass-border);
   box-shadow: 0 8px 32px rgba(0,0,0,0.3);
   transition: all var(--transition);
 }
 .gallery-img:hover {
-  transform: scale(1.02); box-shadow: 0 12px 40px rgba(139,124,255,0.2), 0 6px 20px rgba(0,0,0,0.4);
+  transform: scale(1.02); box-shadow: 0 12px 40px rgba(212,165,116,0.2), 0 6px 20px rgba(0,0,0,0.4);
 }
 
 @media (max-width: 768px) {
   .gallery-img { width: 240px; height: 320px; }
 }
-
-
-
-
-
-
-
 
 .name-row {
   display: flex; align-items: baseline; justify-content: center; gap: 0;
@@ -239,20 +234,23 @@ nav .nav-links a:hover, nav .nav-links a.active { color: var(--text); background
 
 .section { padding: 72px 24px; position: relative; }
 .section-inner { max-width: 1140px; margin: 0 auto; }
+
+#unconventional { padding-top: 32px; }
 .section-header { text-align: center; margin-bottom: 44px; }
 .section-header .section-number {
-  display: inline-block; font-family: 'Space Grotesk', monospace;
+  display: inline-block; font-family: var(--font-editorial); font-size: 1rem; font-style: italic;
   font-size: 0.75rem; color: var(--accent); letter-spacing: 3px;
   margin-bottom: 10px; font-weight: 600;
 }
 .section-header h2 {
+  font-family: var(--font-editorial); font-style: italic; letter-spacing: -0.02em;
   font-size: clamp(1.6rem, 3.5vw, 2.5rem); font-weight: 700;
   margin-bottom: 10px; letter-spacing: -0.01em;
 }
 .section-header h2, .section-header p { text-wrap: balance; }
 .section-header h2 .highlight {
   background: linear-gradient(135deg, var(--accent), var(--accent2));
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text; -webkit-text-fill-color: var(--accent);
   background-clip: text;
 }
 .section-header p { color: var(--text2); font-size: 0.9rem; max-width: 480px; margin: 0 auto; }
@@ -261,7 +259,7 @@ nav .nav-links a:hover, nav .nav-links a.active { color: var(--text); background
   background: linear-gradient(90deg, var(--accent), var(--accent2));
   margin: 14px auto 0; border-radius: 2px; opacity: 0.8;
 }
-.section-alt { background: var(--bg2); }
+.section-alt { background: #0c0b0e; }
 
 .sub-section-title {
   font-size: 1.2rem; font-weight: 600; margin-bottom: 16px;
@@ -279,17 +277,17 @@ nav .nav-links a:hover, nav .nav-links a.active { color: var(--text); background
 .grid-books { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; }
 .grid-auto > *, .grid-2col > *, .grid-books > * { min-width: 0; }
 .metric-rail { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--glass-border); border: 1px solid var(--glass-border); border-radius: var(--radius); overflow: hidden; }
-.metric-cell { background: rgba(22,22,37,0.8); padding: 20px 18px; min-height: 104px; }
+.metric-cell { background: rgba(18,17,22,0.8); padding: 20px 18px; min-height: 104px; }
 .metric-cell .metric-value { display: block; font: 700 clamp(1.35rem, 3vw, 2rem)/1.1 'Space Grotesk', monospace; color: var(--text); font-variant-numeric: tabular-nums; letter-spacing: -0.04em; }
 .metric-cell .metric-label { display: block; margin-top: 8px; color: var(--text2); font-size: 0.75rem; }
 .metric-cell .metric-note { display: block; margin-top: 3px; color: var(--accent2); font-size: 0.68rem; }
-.asset-placeholder { min-height: 190px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; padding: 24px; text-align: center; color: var(--text2); background: linear-gradient(135deg, rgba(139,124,255,0.11), rgba(56,189,248,0.04)); border: 1px dashed rgba(139,124,255,0.36); }
+.asset-placeholder { min-height: 190px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; padding: 24px; text-align: center; color: var(--text2); background: linear-gradient(135deg, rgba(212,165,116,0.11), rgba(201,169,98,0.04)); border: 1px dashed rgba(212,165,116,0.36); }
 .asset-placeholder strong { color: var(--text); font-size: 0.95rem; font-weight: 600; }
 .asset-placeholder small { color: var(--text3); font-size: 0.72rem; }
 .asset-placeholder-wide { min-height: clamp(220px, 30vw, 360px); }
 .asset-placeholder .placeholder-mark { font: 700 1.6rem/1 'Space Grotesk', monospace; color: var(--accent); opacity: 0.75; }
 .practice-grid { display: grid; grid-template-columns: 1.35fr 0.85fr; gap: 20px; align-items: stretch; }
-.practice-card { position: relative; overflow: hidden; min-height: 260px; padding: 28px; border: 1px solid var(--glass-border); border-radius: var(--radius); background: linear-gradient(140deg, rgba(139,124,255,0.14), rgba(22,22,37,0.9) 65%); }
+.practice-card { position: relative; overflow: hidden; min-height: 260px; padding: 28px; border: 1px solid var(--glass-border); border-radius: var(--radius); background: linear-gradient(140deg, rgba(212,165,116,0.14), rgba(18,17,22,0.9) 65%); }
 .practice-card.compact { min-height: 0; background: var(--glass); }
 .practice-card:hover { border-color: var(--glass-border-hover); transform: translateY(-3px); box-shadow: var(--shadow-sm); }
 .practice-card h3 { font-size: clamp(1.2rem, 2vw, 1.55rem); margin: 10px 0 8px; font-weight: 700; }
@@ -319,7 +317,7 @@ nav .nav-links a:hover, nav .nav-links a.active { color: var(--text); background
 
 .card {
   border-radius: var(--radius); overflow: hidden;
-  background: var(--surface); border: 1px solid var(--glass-border);
+  background: #0f0d11; border: 1px solid var(--glass-border);
   transition: all var(--transition);
 }
 .card:hover {
@@ -345,7 +343,7 @@ nav .nav-links a:hover, nav .nav-links a.active { color: var(--text); background
 .card-img .placeholder-art { font-size: 2.8rem; opacity: 0.25; }
 .card-img .card-img-overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(0deg, rgba(22,22,37,0.7) 0%, transparent 45%);
+  background: linear-gradient(0deg, rgba(18,17,22,0.7) 0%, transparent 45%);
   pointer-events: none;
 }
 
@@ -382,8 +380,8 @@ nav .nav-links a:hover, nav .nav-links a.active { color: var(--text); background
 .xhs-card {
   display: flex; align-items: center; justify-content: space-between;
   padding: 14px 20px; gap: 16px; flex-wrap: wrap;
-  background: rgba(255, 68, 68, 0.08);
-  border: 1px solid rgba(255, 68, 68, 0.18);
+  background: rgba(212, 165, 116, 0.08);
+  border: 1px solid rgba(212, 165, 116, 0.18);
   border-radius: 10px; margin: 16px 20px 16px;
 }
 .xhs-header {
@@ -439,14 +437,14 @@ nav .nav-links a:hover, nav .nav-links a.active { color: var(--text); background
 .novel-cover-wrap {
   width: 100%; max-width: 240px; margin: 0 auto 20px;
   border-radius: 8px; overflow: hidden;
-  box-shadow: 0 12px 40px rgba(139,124,255,0.1), 0 4px 12px rgba(0,0,0,0.3);
+  box-shadow: 0 12px 40px rgba(212,165,116,0.1), 0 4px 12px rgba(0,0,0,0.3);
   aspect-ratio: 0.74;
 }
 .novel-cover-img {
   width: 100%; height: 100%; object-fit: cover; display: block;
 }
 .novel-card {
-  background: linear-gradient(135deg, rgba(139,124,255,0.06), rgba(6,182,212,0.04));
+  background: linear-gradient(135deg, rgba(212,165,116,0.06), rgba(6,182,212,0.04));
   border: 1px solid var(--glass-border);
   border-radius: var(--radius); padding: 36px;
   text-align: center;
@@ -466,7 +464,7 @@ nav .nav-links a:hover, nav .nav-links a.active { color: var(--text); background
   transition: all 0.3s ease; font-weight: 450;
 }
 .novel-card .novel-link:hover {
-  background: rgba(56,189,248,0.1);
+  background: rgba(201,169,98,0.1);
   border-color: var(--accent2); transform: translateY(-2px);
 }
 
@@ -501,8 +499,8 @@ nav .nav-links a:hover, nav .nav-links a.active { color: var(--text); background
 }
 .timeline-item .tl-tag { display: inline-block; margin: 0; max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; 
   display: inline-block; padding: 2px 10px; border-radius: 4px;
-  font-size: 0.68rem; background: rgba(139,124,255,0.12); color: var(--accent);
-  border: 1px solid rgba(139,124,255,0.2); margin-bottom: 6px; font-weight: 450;
+  font-size: 0.68rem; background: rgba(212,165,116,0.12); color: var(--accent);
+  border: 1px solid rgba(212,165,116,0.2); margin-bottom: 6px; font-weight: 450;
 }
 .timeline-item h4 { font-size: 0.95rem; font-weight: 600; margin-top: 2px; margin-bottom: 0; }
 .timeline-item p { font-size: 0.82rem; color: var(--text2); line-height: 1.6; }
@@ -525,8 +523,8 @@ nav .nav-links a:hover, nav .nav-links a.active { color: var(--text); background
 .paper-card .paper-meta { display: flex; gap: 10px; flex-wrap: wrap; }
 .paper-card .paper-meta .tag {
   padding: 2px 10px; border-radius: 4px; font-size: 0.68rem;
-  background: rgba(56,189,248,0.1); color: var(--accent2);
-  border: 1px solid rgba(56,189,248,0.18); font-weight: 450;
+  background: rgba(201,169,98,0.1); color: var(--accent2);
+  border: 1px solid rgba(201,169,98,0.18); font-weight: 450;
 }
 
 .section-gap { margin-bottom: 32px; }
@@ -561,9 +559,26 @@ nav .nav-links a:hover, nav .nav-links a.active { color: var(--text); background
 .coding-card-body .cc-tags { display: flex; gap: 6px; margin-top: 14px; flex-wrap: wrap; }
 .coding-card-body .cc-tag {
   padding: 3px 10px; border-radius: 4px; font-size: 0.68rem;
-  background: rgba(139,124,255,0.12); color: var(--accent);
-  border: 1px solid rgba(139,124,255,0.2); font-weight: 450;
+  background: rgba(212,165,116,0.12); color: var(--accent);
+  border: 1px solid rgba(212,165,116,0.2); font-weight: 450;
 }
+.coding-card-body .cc-thumb {
+  width: 100%; height: auto; border-radius: 6px; margin-bottom: 16px;
+  display: block; object-fit: cover;
+}
+.cc-btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
+.coding-card-body .cc-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-top: 16px; padding: 8px 18px; border-radius: 6px;
+  background: var(--accent); color: #08080c;
+  text-decoration: none; font-size: 0.8rem; font-weight: 500;
+  transition: all 0.3s ease;
+  width: fit-content;
+}
+.coding-card-body .cc-btn:hover {
+  background: #c9a962; transform: translateY(-1px);
+}
+
 
 .student-date {
   font-size: 0.78rem; color: var(--accent2);
@@ -594,7 +609,7 @@ footer .footer-links a:hover { color: var(--accent); }
 
 .glossy-overlay {
   position: absolute; inset: 0; pointer-events: none;
-  background: radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(139,124,255,0.06) 0%, transparent 60%);
+  background: radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(212,165,116,0.06) 0%, transparent 60%);
 }
 
 @media (max-width: 900px) {
@@ -618,6 +633,7 @@ footer .footer-links a:hover { color: var(--accent); }
   .hero { padding: 80px 20px 50px; }
   .section { padding: 60px 20px; }
   .dy-stats { gap: 8px; }
+  #unconventional { padding-top: 24px; }
   .dy-stat .num { font-size: 1.2rem; }
   .metric-rail, .experience-grid, .skill-groups { grid-template-columns: 1fr; }
   .metric-cell { min-height: 88px; }
@@ -667,19 +683,14 @@ footer .footer-links a:hover { color: var(--accent); }
       写代码 · 做内容 · 写小说 · 做产品 · 全都要
     </p>
     <div class="quick-info reveal reveal-d4">
-      <div class="info-item">
-        <span class="label">公司 · 岗位</span>
-        <span class="value">链星匣</span>
-        <span class="value small">商业化 &amp; AI 产品经理 · 2026.07—至今</span>
-      </div>
-      <div class="info-item">
+<div class="info-item">
         <span class="label">高校</span>
         <span class="value">浙江大学 · 硕士 · 五好研究生</span>
         <span class="value small">四川大学 · 学士 · 百佳学生</span>
       </div>
       <div class="info-item">
         <span class="label">工作地点 · 家乡</span>
-        <span class="value pending-field">📍 工作地点待确认</span>
+        <span class="value">杭州</span>
         <span class="value small">四川宜宾</span>
       </div>
     </div>
@@ -699,14 +710,14 @@ footer .footer-links a:hover { color: var(--accent); }
     <div class="photo-gallery reveal">
       <div class="gallery-track">
       <img src="avatar.jpg" alt="闫子坤肖像" class="gallery-img" width="2731" height="4096" decoding="async">
-      <img src="photo1.jpg" alt="闫子坤个人照片：校园生活记录" class="gallery-img" loading="lazy" width="2392" height="3211" decoding="async">
-      <img src="photo2.jpg" alt="闫子坤个人照片：创作记录" class="gallery-img" loading="lazy" width="2701" height="4096" decoding="async">
-      <img src="photo3.jpg" alt="闫子坤个人照片：生活瞬间" class="gallery-img" loading="lazy" width="7524" height="5016" decoding="async">
+<img src="photo1.jpg" alt="闫子坤个人照片：校园生活记录" class="gallery-img" loading="lazy" width="2392" height="3211" decoding="async">
+      <img src="photo8.jpg" alt="闫子坤个人照片：生活瞬间" class="gallery-img" loading="lazy" width="5016" height="7524" decoding="async">
       <img src="photo4.jpg" alt="闫子坤个人照片：生活瞬间" class="gallery-img" loading="lazy" width="6840" height="4588" decoding="async">
+      <img src="photo3.jpg" alt="闫子坤个人照片：生活瞬间" class="gallery-img" loading="lazy" width="7524" height="5016" decoding="async">
+      <img src="photo2.jpg" alt="闫子坤个人照片：创作记录" class="gallery-img" loading="lazy" width="2701" height="4096" decoding="async">
       <img src="photo5.jpg" alt="闫子坤个人照片：创作工作台" class="gallery-img" loading="lazy" width="2817" height="1878" decoding="async">
       <img src="photo6.jpg" alt="闫子坤个人照片：生活瞬间" class="gallery-img" loading="lazy" width="4096" height="2730" decoding="async">
       <img src="photo7.jpg" alt="闫子坤个人照片：校园记录" class="gallery-img" loading="lazy" width="1257" height="1763" decoding="async">
-      <img src="photo8.jpg" alt="闫子坤个人照片：生活瞬间" class="gallery-img" loading="lazy" width="5016" height="7524" decoding="async">
       <img src="photo9.jpg" alt="闫子坤个人照片：生活瞬间" class="gallery-img" loading="lazy" width="2886" height="2886" decoding="async">
       <img src="photo10.jpg" alt="闫子坤个人照片：生活瞬间" class="gallery-img" loading="lazy" width="6000" height="4000" decoding="async">
     </div>
@@ -716,6 +727,7 @@ footer .footer-links a:hover { color: var(--accent); }
     <span class="arrow">▿</span>
   </button>
 </section>
+
 
 <section id="unconventional" class="section">
   <div class="section-inner">
@@ -727,13 +739,13 @@ footer .footer-links a:hover { color: var(--accent); }
     </div>
 
     <div class="sub-section-title reveal">
-      <span>📱 个人内容产品 · 抖音</span>
+      <span>个人内容产品 / 抖音</span>
       <span class="accent-line"></span>
     </div>
     <div class="reveal section-gap-sm">
       <div class="dy-showcase">
         <div class="dy-screenshot-wrap">
-          <img src="douyin-preview.png?v=20260806" alt="抖音主页截图 · Yan子坤 · 12w+ 粉丝" class="dy-screenshot" width="1200" height="800" loading="lazy" decoding="async">
+          <img src="douyin-preview.png?v=20260806" alt="抖音主页截图 · Yan子坤 · 11w+ 粉丝" class="dy-screenshot" width="1200" height="800" loading="lazy" decoding="async">
         </div>
         <div class="dy-info-row">
           <div class="dy-text-info">
@@ -742,8 +754,8 @@ footer .footer-links a:hover { color: var(--accent); }
             <div class="dy-bio">校园生活向自媒体 IP · 从 0 到 1 内容产品打造 · 欢迎商务合作</div>
           </div>
           <div class="dy-stats">
-            <div class="dy-stat"><div class="num">12w+</div><div class="lbl">抖音粉丝</div></div>
-            <div class="dy-stat"><div class="num">109.2w+</div><div class="lbl">总获赞</div></div>
+            <div class="dy-stat"><div class="num">11w+</div><div class="lbl">抖音粉丝</div></div>
+            <div class="dy-stat"><div class="num">112.2w+</div><div class="lbl">总获赞</div></div>
             <div class="dy-stat"><div class="num">600+</div><div class="lbl">原创视频</div></div>
           </div>
         </div>
@@ -753,12 +765,12 @@ footer .footer-links a:hover { color: var(--accent); }
             <div class="entry-info"><div class="title">最高播放爆款</div><div class="stats">播放 314.7w · 点赞 13.1w</div></div>
           </div>
           <div class="dy-entry">
-            <div class="entry-rank">📊</div>
+            <div class="entry-rank"></div>
             <div class="entry-info"><div class="title">平均播放量级</div><div class="stats">约 5w+ / 条</div></div>
           </div>
           <div class="dy-entry">
             <div class="entry-rank">⭐</div>
-            <div class="entry-info"><div class="title">抖音精选作品</div><div class="stats">近年 26 条作品入选</div></div>
+            <div class="entry-info"><div class="title">抖音精选作品</div><div class="stats">近年 35 条作品入选</div></div>
           </div>
           <div class="dy-entry">
             <div class="entry-rank">📺</div>
@@ -782,7 +794,7 @@ footer .footer-links a:hover { color: var(--accent); }
     </div>
 
     <div class="sub-section-title reveal">
-      <span>🎨 AIGC 视频创作案例</span>
+      <span>AIGC 视频创作案例</span>
       <span class="accent-line"></span>
     </div>
     <div class="grid-auto section-gap-sm reveal">
@@ -797,40 +809,55 @@ footer .footer-links a:hover { color: var(--accent); }
           <a href="https://v.douyin.com/c1LjfhbDmns/" class="card-link" target="_blank" rel="noopener">查看作品 →</a>
         </div>
       </div>
+      <div class="card">
+        <div class="card-img" style="background:none;">
+          <img src="yijianjian.png" alt="《神器系列：一念键》AI 数字人短片截图" width="1920" height="1080" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <div class="card-img-overlay"></div>
+        </div>
+        <div class="card-info">
+          <h4>AI 数字人短片 · 《神器系列：一念键》</h4>
+          <p>AI 数字人短片，全网播放量破 10w+</p>
+          <a href="https://v.douyin.com/LUVBbccZ2-U/" class="card-link" target="_blank" rel="noopener">查看作品 →</a>
+        </div>
+      </div>
     </div>
 
     
     <div class="sub-section-title reveal">
-      <span>🤖 个人 AI Coding 项目</span>
+      <span>AI Coding 项目</span>
       <span class="accent-line"></span>
     </div>
     <div class="grid-auto section-gap-sm reveal">
       <div class="card coding-card-body">
-        <span class="cc-icon">⚡</span>
-        <h4>提示词大师</h4>
-        <p>面向 AIGC 视频创作者的 AI 内容生产引擎。完成需求分析、产品定义、PRD、Vibe Coding、上线跟进与数据复盘，搭建"导演规划—RAG 检索—文稿生成—10 维审核—文稿重写"多 Agent 工作流。用户抽卡次数从 3.5 降至 1.5，定稿效率 +133.33%，首周 70+ 用户转化。</p>
+        <img src="prompt-master.png?v=20260806" alt="提示词大师产品截图" class="cc-thumb" width="800" height="500" loading="lazy" decoding="async">
+<h4>提示词大师 <span style="font-weight:400;font-size:0.75rem;color:var(--accent2)">（已上线，同时已开源轻量化 Skill）</span></h4>
+        <p>面向 AIGC 视频创作者「写词混乱、需求丢失、成片不稳定」的真实痛点，设计「提示词大师」提示词生成系统，搭建「导演规划-RAG 案例检索-文稿生成-10 维质量审核-文稿重写」多 Agent 工作流，完成从需求分析、方案设计、PRD 写作、Vibe Coding 到上线跟进与数据复盘的完整闭环；积累 100+ 条影视级视频提示词 RAG 库沉淀，推动 20 组对照测试，抽卡次数由 3.5 次降至 1.5 次，生产效率提升 133.33%。</p>
         <div class="cc-tags">
           <span class="cc-tag">多 Agent 工作流</span>
           <span class="cc-tag">RAG 案例库 100+</span>
-          <span class="cc-tag">3.5→1.5 抽卡</span>
-          <span class="cc-tag">+133.33%</span>
+          <span class="cc-tag">10 维审片</span>
+          <span class="cc-tag">效率提升 133%</span>
+        </div>
+        <div class="cc-btn-row">
+          <a href="https://promptmaster.novastarbox.com/login?returnTo=%2Fapp" class="cc-btn" target="_blank" rel="noopener">访问提示词大师 ↗</a>
+          <a href="https://github.com/McAuliffe-yzk/cinematic-prompt-master-skill" class="cc-btn" target="_blank" rel="noopener">GitHub · 开源 Skill ↗</a>
         </div>
       </div>
       <div class="card coding-card-body">
-        <span class="cc-icon">🎬</span>
+        <img src="xiangzhongjing.png?v=20260806" alt="匣中镜 AI Vlogger Studio 截图" class="cc-thumb" width="800" height="500" loading="lazy" decoding="async">
         <h4>匣中镜 AI Vlogger Studio</h4>
-        <p>AI 驱动的 Vlog 全流程创作工具。围绕项目管理、素材录入、AI 生成、在线编辑、版本保存与风格持续优化，将初稿耗时从 2–3 小时压缩至约 20 分钟。流量稳定性达 78.24%，已服务 7 位博主创作。</p>
+        <p>从自媒体创作者「文案产出慢、AI 写作不像自己、灵感与项目管理分散」的痛点入手，基于 Codex 设计和落地「项目管理→素材录入→AI 生成→在线编辑→版本保存→风格持续优化」产品。初稿产出时间从平均 2-3 小时压缩至 20 分钟，内容流量稳定性达 78.24%，服务 7 位博主创作。</p>
         <div class="cc-tags">
-          <span class="cc-tag">AI Vlog</span>
-          <span class="cc-tag">效率 9×</span>
-          <span class="cc-tag">78.24% 稳定性</span>
-          <span class="cc-tag">7 位博主</span>
+          <span class="cc-tag">写作 Skill</span>
+          <span class="cc-tag">产出提速 6-9x</span>
+          <span class="cc-tag">流量稳定性 78%</span>
+          <span class="cc-tag">服务 7 位博主</span>
         </div>
       </div>
     </div>
 
     <div class="sub-section-title reveal">
-      <span>📖 小说创作</span>
+      <span>小说创作</span>
       <span class="accent-line"></span>
     </div>
     <div class="reveal">
@@ -845,27 +872,16 @@ footer .footer-links a:hover { color: var(--accent); }
           当光的偏振方向改变，世界将呈现出不同的模样……
         </p>
         <a class="novel-link" href="https://www.qidian.com/book/1049190666/" target="_blank" rel="noopener">
-          📖 前往起点阅读 →
+          前往起点阅读 →
         </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="conventional" class="section section-alt">
-  <div class="section-inner">
-    <div class="section-header reveal">
-      <div class="section-number">/ 02</div>
-      <h2>不误正业的 <span class="highlight">工科生</span></h2>
-      <p>学术 · 项目 · 实干</p>
-      <div class="section-divider"></div>
+        </div>
     </div>
 
-    <div class="sub-section-title reveal">
-      <span>💼 实习经历</span>
+    <div class="sub-section-title reveal" style="margin-top: 36px;">
+      <span>实习经历</span>
       <span class="accent-line"></span>
     </div>
-    <div class="reveal section-gap-sm">
+<div class="reveal section-gap-sm">
       <div class="timeline">
         <div class="timeline-item">
           <h4>链星匣（成都）网络科技服务有限公司</h4>
@@ -907,8 +923,22 @@ footer .footer-links a:hover { color: var(--accent); }
       </div>
     </div>
 
+    
+  </div>
+    </div>
+</section>
+
+<section id="conventional" class="section section-alt">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-number">/ 02</div>
+      <h2>不误正业的 <span class="highlight">工科生</span></h2>
+      <p>学术 · 项目 · 实干</p>
+      <div class="section-divider"></div>
+    </div>
+
     <div class="sub-section-title reveal">
-      <span>📄 论文发表</span>
+      <span>论文发表</span>
       <span class="accent-line"></span>
     </div>
     <div class="reveal section-gap-sm">
@@ -947,16 +977,13 @@ footer .footer-links a:hover { color: var(--accent); }
     </div>
 
     <div class="sub-section-title reveal">
-      <span>🧪 科研项目</span>
+      <span>科研项目</span>
       <span class="accent-line"></span>
     </div>
     <div class="reveal section-gap-sm">
       <div class="timeline">
         <div class="timeline-item">
-          
-          
-          
-          
+
           <h4>长江流域水质预测深度学习模型构建</h4>
           <div class="tl-meta">
           <div class="tl-tag">建模工程师</div>
@@ -964,13 +991,10 @@ footer .footer-links a:hover { color: var(--accent); }
           <div class="tl-date">2024.12 – 2027.03</div>
         </div>
           <p>AI for Science：设计 Transformer+LSTM 时空混合模型 Basinformer（R²=0.9304）；自主迭代 Basinformer 时空耦合模型（一作已见刊）。完成需求定义、模型构设、实验验证、论文产出的 AI 技术全流程。</p>
-          <div class="tl-outcome">📄 SCI 二区论文已见刊（一作）</div>
+          <div class="tl-outcome">SCI 二区论文已见刊（一作）</div>
         </div>
         <div class="timeline-item">
-          
-          
-          
-          
+
           <h4>浙江省"尖兵""领雁"研发攻关计划</h4>
           <div class="tl-meta">
           <div class="tl-tag">解决方案经理</div>
@@ -978,13 +1002,13 @@ footer .footer-links a:hover { color: var(--accent); }
           <div class="tl-date">2024.09 – 2026.03</div>
         </div>
           <p>推动"流域水质预测预警智慧化平台 V1.0"设计与落地。结合 CNN 图像识别与 ArcGIS 空间分析构建污染源清单，独立完成 SWAT-QUAL2K-LSTM 耦合模型设计、构建和交付。</p>
-          <div class="tl-outcome">📟 软件著作权（排名第2，导师第1）· 平台完成工程化交付</div>
+          <div class="tl-outcome">软件著作权（排名第2，导师第1）· 平台完成工程化交付</div>
         </div>
       </div>
     </div>
 
     <div class="sub-section-title reveal">
-      <span>🏆 商赛项目</span>
+      <span>商赛项目</span>
       <span class="accent-line"></span>
     </div>
     <div class="reveal section-gap-sm">
@@ -997,13 +1021,10 @@ footer .footer-links a:hover { color: var(--accent); }
           <div class="tl-date">2026.03 – 2026.04</div>
         </div>
           <p>围绕"S 市 L 运营商 W 区昇腾智算中心"建设项目，从整体架构、硬件部署、软件平台、交付实施、风险应急、运维体系六大维度打造综合交付方案。</p>
-          <div class="tl-outcome">🏆 区域赛二等奖</div>
+          <div class="tl-outcome">区域赛二等奖</div>
         </div>
         <div class="timeline-item">
-          
-          
-          
-          
+
           <h4>第18届"挑战杯"全国大学生课外学术科技作品竞赛</h4>
           <div class="tl-meta">
           <div class="tl-tag">队员</div>
@@ -1015,7 +1036,7 @@ footer .footer-links a:hover { color: var(--accent); }
             · 调研实践：基于4×5指标体系面向7省市38所高校12777名大学生、21所高校部门和7个省市级人社部门开展问卷调研和深度访谈，得有效问卷10707份、20万字访谈和12万字调研报告，开展就业类活动2951场次。<br>
             · 对策分析：提出以高质量充分就业为核心"一三四"就业培育工作体系并结合就业素养测评模型整合就业活动。
           </p>
-          <div class="tl-outcome">🏆 国家级特等奖</div>
+          <div class="tl-outcome">国家级特等奖</div>
         </div>
         <div class="timeline-item">
           <h4>中航国际第五届航星计划课题挑战赛</h4>
@@ -1028,40 +1049,13 @@ footer .footer-links a:hover { color: var(--accent); }
             · 命题展示：基于"飞亚达"品牌销售现状，设计新媒体领域的出圈计划，提出品牌和产品的新媒体宣传新方式。<br>
             · 营销策划：作为队长基于抖音及飞亚达"心弦"系列腕表，提出"飞亚达抖音3tag活动"结合"航天文化"、"职场女性文化"和"飞亚达品牌文化"设计内外双循环体系链接情感和需求，形成可持续出圈方案实现品牌生态。
           </p>
-          <div class="tl-outcome">🏆 二等奖</div>
+          <div class="tl-outcome">二等奖</div>
         </div>
       </div>
     </div>
 
     <div class="sub-section-title reveal">
-      <span>🎓 教育背景</span>
-      <span class="accent-line"></span>
-    </div>
-    <div class="reveal section-gap-sm">
-      <div class="timeline">
-        <div class="timeline-item">
-          <h4>浙江大学 · 资源与环境 · 硕士</h4>
-          <div class="tl-meta">
-          <div class="tl-tag">硕士研究生</div>
-          <span class="tl-sep">·</span>
-          <div class="tl-date">2024.09 – 2027.06</div>
-        </div>
-          <p>环境科学与工程方向，AI for Science 交叉研究。研究方向：深度学习水质预测、光催化制氢协同治理。</p>
-        </div>
-        <div class="timeline-item">
-          <h4>四川大学 · 环境工程 · 本科</h4>
-          <div class="tl-meta">
-          <div class="tl-tag">工学学士</div>
-          <span class="tl-sep">·</span>
-          <div class="tl-date">2020.09 – 2024.06</div>
-        </div>
-          <p>环境工程专业，辅修数据科学与智能技术。</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="sub-section-title reveal">
-      <span>👥 学生工作</span>
+      <span>学生工作</span>
       <span class="accent-line"></span>
     </div>
     <div class="reveal section-gap-sm">
@@ -1083,28 +1077,6 @@ footer .footer-links a:hover { color: var(--accent); }
       </div>
     </div>
 
-    <div class="sub-section-title reveal">
-      <span>🛠 工作技能</span>
-      <span class="accent-line"></span>
-    </div>
-    <div class="reveal section-gap-sm">
-      <div class="skill-groups">
-        <div class="skill-group">
-          <h4>AI 产品 &amp; 开发</h4>
-          <p>Codex · Claude Code · Trae · WorkBuddy<br>Python · PyTorch</p>
-        </div>
-        <div class="skill-group">
-          <h4>AI 工具 &amp; 创作</h4>
-          <p>Runninghub · Liblib.tv · 剪映<br>Premiere Pro · Photoshop</p>
-        </div>
-        <div class="skill-group">
-          <h4>关键能力</h4>
-          <p>多 Agent 工作流设计 · RAG 构建<br>产品全流程 · AIGC 内容管线</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <section id="reading" class="section">
   <div class="section-inner">
@@ -1173,7 +1145,7 @@ footer .footer-links a:hover { color: var(--accent); }
       p.x+=p.vx; p.y+=p.vy;
       if(p.x<0)p.x=w;if(p.x>w)p.x=0;if(p.y<0)p.y=h;if(p.y>h)p.y=0;
       ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-      ctx.fillStyle=`rgba(139,124,255,${p.a})`;
+      ctx.fillStyle=`rgba(212,165,116,${p.a})`;
       ctx.fill();
     }
     for (let i=0;i<particles.length;i++) {
@@ -1185,7 +1157,7 @@ footer .footer-links a:hover { color: var(--accent); }
           ctx.beginPath();
           ctx.moveTo(particles[i].x,particles[i].y);
           ctx.lineTo(particles[j].x,particles[j].y);
-          ctx.strokeStyle=`rgba(139,124,255,${0.07*(1-dist/140)})`;
+          ctx.strokeStyle=`rgba(212,165,116,${0.07*(1-dist/140)})`;
           ctx.lineWidth=0.5;
           ctx.stroke();
         }
