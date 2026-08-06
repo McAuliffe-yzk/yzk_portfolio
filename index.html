@@ -3,9 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>闫子奇 | 不务正业的工科生</title>
+<meta name="description" content="闫子奇（Yan子坤）的个人网站：AI 产品、内容创作、AIGC 实验与科研实践。">
+<meta name="theme-color" content="#09090f">
+<meta property="og:title" content="闫子奇 | 不务正业的工科生">
+<meta property="og:description" content="AI 产品、内容创作、AIGC 实验与科研实践。">
+<meta property="og:type" content="website">
+<meta property="og:image" content="aigc-cover.jpg">
+<meta property="og:image:alt" content="《偏光而行》AI 影视先导片视觉">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2309090f'/%3E%3Ccircle cx='32' cy='32' r='14' fill='%238b7cff'/%3E%3Ccircle cx='38' cy='26' r='5' fill='%2338bdf8'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
@@ -27,17 +34,26 @@
   --radius-sm: 10px;
   --shadow: 0 8px 40px rgba(0,0,0,0.5);
   --shadow-sm: 0 4px 16px rgba(0,0,0,0.3);
-  --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --transition: 0.32s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
 body {
-  font-family: 'Noto Sans SC', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
   background: var(--bg);
   color: var(--text);
   line-height: 1.7;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased; word-break: break-word; overflow-wrap: break-word;
 }
+body::before {
+  content: ''; position: fixed; inset: 0; z-index: 2000; pointer-events: none;
+  opacity: 0.035; mix-blend-mode: screen;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+}
+a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
+  outline: 2px solid var(--accent2); outline-offset: 4px;
+}
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: var(--bg2); }
 ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
@@ -79,7 +95,7 @@ nav .nav-links a:hover, nav .nav-links a.active { color: var(--text); background
 .menu-toggle span { width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: 0.3s; }
 
 .hero {
-  min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  min-height: 100dvh; display: flex; align-items: center; justify-content: center;
   position: relative; text-align: center; padding: 100px 24px 60px;
   overflow: hidden;
 }
@@ -140,7 +156,7 @@ nav .nav-links a:hover, nav .nav-links a.active { color: var(--text); background
 }
 .contact-btn {
   display: inline-flex; align-items: center; gap: 8px;
-  padding: 9px 22px; border-radius: 8px; font-size: 0.82rem;
+  min-height: 42px; padding: 9px 22px; border-radius: 8px; font-size: 0.82rem;
   text-decoration: none; font-weight: 500; transition: all 0.3s ease;
   background: var(--glass); border: 1px solid var(--glass-border);
   color: var(--text);
@@ -149,6 +165,9 @@ nav .nav-links a:hover, nav .nav-links a.active { color: var(--text); background
   background: var(--glass-hover); border-color: var(--glass-border-hover);
   transform: translateY(-2px); box-shadow: var(--shadow-sm);
 }
+.contact-btn:active { transform: translateY(1px) scale(0.98); }
+.contact-btn.pending { color: var(--text3); border-style: dashed; cursor: default; }
+.pending-field { color: var(--text3); font-style: italic; }
 .contact-btn.primary {
   background: linear-gradient(135deg, var(--accent), #a855f7);
   border: none; color: #fff;
@@ -209,6 +228,9 @@ nav .nav-links a:hover, nav .nav-links a.active { color: var(--text); background
   animation: bounce 2.5s ease-in-out infinite; cursor: pointer;
   opacity: 0.5;
 }
+.scroll-indicator {
+  border: 0; background: transparent; font: inherit;
+}
 .scroll-indicator .arrow { line-height: 1; }
 @keyframes bounce {
   0%,100% { transform: translateX(-50%) translateY(0); }
@@ -227,6 +249,7 @@ nav .nav-links a:hover, nav .nav-links a.active { color: var(--text); background
   font-size: clamp(1.6rem, 3.5vw, 2.5rem); font-weight: 700;
   margin-bottom: 10px; letter-spacing: -0.01em;
 }
+.section-header h2, .section-header p { text-wrap: balance; }
 .section-header h2 .highlight {
   background: linear-gradient(135deg, var(--accent), var(--accent2));
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
@@ -255,6 +278,44 @@ nav .nav-links a:hover, nav .nav-links a.active { color: var(--text); background
 .grid-auto { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
 .grid-books { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; }
 .grid-auto > *, .grid-2col > *, .grid-books > * { min-width: 0; }
+.metric-rail { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--glass-border); border: 1px solid var(--glass-border); border-radius: var(--radius); overflow: hidden; }
+.metric-cell { background: rgba(22,22,37,0.8); padding: 20px 18px; min-height: 104px; }
+.metric-cell .metric-value { display: block; font: 700 clamp(1.35rem, 3vw, 2rem)/1.1 'Space Grotesk', monospace; color: var(--text); font-variant-numeric: tabular-nums; letter-spacing: -0.04em; }
+.metric-cell .metric-label { display: block; margin-top: 8px; color: var(--text2); font-size: 0.75rem; }
+.metric-cell .metric-note { display: block; margin-top: 3px; color: var(--accent2); font-size: 0.68rem; }
+.asset-placeholder { min-height: 190px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; padding: 24px; text-align: center; color: var(--text2); background: linear-gradient(135deg, rgba(139,124,255,0.11), rgba(56,189,248,0.04)); border: 1px dashed rgba(139,124,255,0.36); }
+.asset-placeholder strong { color: var(--text); font-size: 0.95rem; font-weight: 600; }
+.asset-placeholder small { color: var(--text3); font-size: 0.72rem; }
+.asset-placeholder-wide { min-height: clamp(220px, 30vw, 360px); }
+.asset-placeholder .placeholder-mark { font: 700 1.6rem/1 'Space Grotesk', monospace; color: var(--accent); opacity: 0.75; }
+.practice-grid { display: grid; grid-template-columns: 1.35fr 0.85fr; gap: 20px; align-items: stretch; }
+.practice-card { position: relative; overflow: hidden; min-height: 260px; padding: 28px; border: 1px solid var(--glass-border); border-radius: var(--radius); background: linear-gradient(140deg, rgba(139,124,255,0.14), rgba(22,22,37,0.9) 65%); }
+.practice-card.compact { min-height: 0; background: var(--glass); }
+.practice-card:hover { border-color: var(--glass-border-hover); transform: translateY(-3px); box-shadow: var(--shadow-sm); }
+.practice-card h3 { font-size: clamp(1.2rem, 2vw, 1.55rem); margin: 10px 0 8px; font-weight: 700; }
+.practice-card p { max-width: 58ch; color: var(--text2); font-size: 0.83rem; line-height: 1.7; }
+.practice-label { color: var(--accent2); font: 600 0.68rem/1 'Space Grotesk', monospace; letter-spacing: 0.14em; text-transform: uppercase; }
+.practice-screenshot { width: 100%; height: auto; max-height: 320px; object-fit: cover; border-radius: var(--radius-sm); margin-bottom: 16px; display: block; border: 1px solid var(--glass-border); }
+.practice-flow { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 20px; }
+.practice-flow span { padding: 5px 9px; color: var(--text2); border: 1px solid var(--glass-border); border-radius: 5px; font-size: 0.68rem; }
+.practice-result { position: absolute; right: 24px; bottom: 22px; color: var(--text); font: 700 1.2rem/1 'Space Grotesk', monospace; font-variant-numeric: tabular-nums; }
+.practice-stack { display: grid; gap: 20px; }
+.practice-stack .practice-card { min-height: 0; }
+.experience-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.experience-card { display: flex; flex-direction: column; gap: 8px; height: 100%; padding: 22px; border: 1px solid var(--glass-border); border-radius: var(--radius-sm); background: rgba(255,255,255,0.025); }
+.experience-card:hover { border-color: var(--glass-border-hover); background: var(--glass); }
+.experience-card .exp-date { color: var(--accent2); font: 600 0.7rem/1.2 'Space Grotesk', monospace; font-variant-numeric: tabular-nums; }
+.experience-card h3 { font-size: 1rem; line-height: 1.45; }
+.experience-card .exp-role { color: var(--accent); font-size: 0.75rem; }
+.experience-card p { color: var(--text2); font-size: 0.78rem; line-height: 1.65; }
+.experience-card .exp-outcome { margin-top: auto; padding-top: 10px; color: var(--text); font-size: 0.75rem; border-top: 1px solid var(--glass-border); }
+.skill-groups { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.skill-group { padding: 20px; border-left: 2px solid var(--accent); background: var(--glass); }
+.skill-group h4 { margin-bottom: 10px; color: var(--text); font-size: 0.86rem; }
+.skill-group p { color: var(--text2); font-size: 0.78rem; line-height: 1.7; }
+.lab-links { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 14px; }
+.lab-links a { color: var(--text2); text-decoration: none; font-size: 0.78rem; transition: color 0.25s ease; }
+.lab-links a:hover { color: var(--accent2); }
 
 .card {
   border-radius: var(--radius); overflow: hidden;
@@ -311,6 +372,7 @@ nav .nav-links a:hover, nav .nav-links a.active { color: var(--text); background
 .dy-screenshot {
   width: 100%; height: auto; display: block;
 }
+.dy-screenshot-wrap.pending { padding: 0; }
 .dy-info-row {
   display: flex; align-items: center; justify-content: space-between;
   padding: 20px 24px; gap: 20px; flex-wrap: wrap;
@@ -353,6 +415,7 @@ nav .nav-links a:hover, nav .nav-links a.active { color: var(--text); background
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+.dy-stat .num, .tl-date, .exp-date { font-variant-numeric: tabular-nums; }
 .dy-stat .lbl { font-size: 0.72rem; color: var(--text2); margin-top: 1px; }
 
 
@@ -521,7 +584,7 @@ footer .footer-links a:hover { color: var(--accent); }
 
 .reveal {
   opacity: 0; transform: translateY(36px);
-  transition: all 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition: opacity 0.5s cubic-bezier(0.22, 0.61, 0.36, 1), transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 .reveal-d1 { transition-delay: 0.1s; }
@@ -535,6 +598,8 @@ footer .footer-links a:hover { color: var(--accent); }
 }
 
 @media (max-width: 900px) {
+  .metric-rail, .experience-grid, .skill-groups { grid-template-columns: repeat(2, 1fr); }
+  .practice-grid { grid-template-columns: 1fr; }
   .grid-2col { grid-template-columns: 1fr; }
 }
 @media (max-width: 768px) {
@@ -554,6 +619,16 @@ footer .footer-links a:hover { color: var(--accent); }
   .section { padding: 60px 20px; }
   .dy-stats { gap: 8px; }
   .dy-stat .num { font-size: 1.2rem; }
+  .metric-rail, .experience-grid, .skill-groups { grid-template-columns: 1fr; }
+  .metric-cell { min-height: 88px; }
+  .practice-card { min-height: 240px; padding: 22px; }
+  .practice-result { position: static; display: block; margin-top: 18px; }
+  .sub-section-title { align-items: flex-start; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  .reveal { opacity: 1; transform: none; }
 }
 </style>
 </head>
@@ -562,7 +637,7 @@ footer .footer-links a:hover { color: var(--accent); }
 <nav id="navbar">
   <div class="logo">
     <span class="logo-mark"></span>
-    闫子奇 <span class="brand-sub">/ Yan子坤 · AIGC PM</span>
+    闫子奇 <span class="brand-sub">/ Yan子坤 · Commercial &amp; AI PM</span>
   </div>
   <button class="menu-toggle" id="menuToggle" aria-label="菜单">
     <span></span><span></span><span></span>
@@ -594,8 +669,8 @@ footer .footer-links a:hover { color: var(--accent); }
     <div class="quick-info reveal reveal-d4">
       <div class="info-item">
         <span class="label">公司 · 岗位</span>
-        <span class="value">浦光星奕</span>
-        <span class="value small">达人AIGC商业化产品经理</span>
+        <span class="value">链星匣</span>
+        <span class="value small">商业化 &amp; AI 产品经理 · 2026.07—至今</span>
       </div>
       <div class="info-item">
         <span class="label">高校</span>
@@ -604,7 +679,7 @@ footer .footer-links a:hover { color: var(--accent); }
       </div>
       <div class="info-item">
         <span class="label">工作地点 · 家乡</span>
-        <span class="value">📍 上海 · 杭州</span>
+        <span class="value pending-field">📍 工作地点待确认</span>
         <span class="value small">四川宜宾</span>
       </div>
     </div>
@@ -614,31 +689,33 @@ footer .footer-links a:hover { color: var(--accent); }
       <span class="tech-badge">Trae</span>
       <span class="tech-badge">Python</span>
       <span class="tech-badge">RunningHub</span>
+      <span class="tech-badge">WorkBuddy</span>
+      <span class="tech-badge">PyTorch</span>
     </div>
     <div class="contact-row reveal">
-      
       <a href="mailto:scybyzk@163.com" class="contact-btn">scybyzk@163.com</a>
       <a href="tel:+8613808294950" class="contact-btn">138-0829-4950</a>
+      <span class="contact-btn pending" aria-label="简历 PDF 待补充">简历 PDF 待补充</span>
     </div>
     <div class="photo-gallery reveal">
       <div class="gallery-track">
-      <img src="avatar.jpg" alt="闫子坤" class="gallery-img">
-      <img src="photo1.jpg" alt="个人照片 1" class="gallery-img">
-      <img src="photo2.jpg" alt="个人照片 2" class="gallery-img">
-      <img src="photo3.jpg" alt="个人照片 3" class="gallery-img">
-      <img src="photo4.jpg" alt="个人照片 4" class="gallery-img">
-      <img src="photo5.jpg" alt="个人照片 5" class="gallery-img">
-      <img src="photo6.jpg" alt="个人照片 6" class="gallery-img">
-      <img src="photo7.jpg" alt="个人照片 7" class="gallery-img">
-      <img src="photo8.jpg" alt="个人照片 8" class="gallery-img">
-      <img src="photo9.jpg" alt="个人照片 9" class="gallery-img">
-      <img src="photo10.jpg" alt="个人照片 10" class="gallery-img">
+      <img src="avatar.jpg" alt="闫子坤肖像" class="gallery-img" width="2731" height="4096" decoding="async">
+      <img src="photo1.jpg" alt="闫子坤个人照片：校园生活记录" class="gallery-img" loading="lazy" width="2392" height="3211" decoding="async">
+      <img src="photo2.jpg" alt="闫子坤个人照片：创作记录" class="gallery-img" loading="lazy" width="2701" height="4096" decoding="async">
+      <img src="photo3.jpg" alt="闫子坤个人照片：生活瞬间" class="gallery-img" loading="lazy" width="7524" height="5016" decoding="async">
+      <img src="photo4.jpg" alt="闫子坤个人照片：生活瞬间" class="gallery-img" loading="lazy" width="6840" height="4588" decoding="async">
+      <img src="photo5.jpg" alt="闫子坤个人照片：创作工作台" class="gallery-img" loading="lazy" width="2817" height="1878" decoding="async">
+      <img src="photo6.jpg" alt="闫子坤个人照片：生活瞬间" class="gallery-img" loading="lazy" width="4096" height="2730" decoding="async">
+      <img src="photo7.jpg" alt="闫子坤个人照片：校园记录" class="gallery-img" loading="lazy" width="1257" height="1763" decoding="async">
+      <img src="photo8.jpg" alt="闫子坤个人照片：生活瞬间" class="gallery-img" loading="lazy" width="5016" height="7524" decoding="async">
+      <img src="photo9.jpg" alt="闫子坤个人照片：生活瞬间" class="gallery-img" loading="lazy" width="2886" height="2886" decoding="async">
+      <img src="photo10.jpg" alt="闫子坤个人照片：生活瞬间" class="gallery-img" loading="lazy" width="6000" height="4000" decoding="async">
     </div>
     </div>
   </div>
-  <div class="scroll-indicator" onclick="document.getElementById('unconventional').scrollIntoView({behavior:'smooth'})">
+  <button class="scroll-indicator" type="button" aria-label="向下浏览个人内容" onclick="document.getElementById('unconventional').scrollIntoView({behavior:'smooth'})">
     <span class="arrow">▿</span>
-  </div>
+  </button>
 </section>
 
 <section id="unconventional" class="section">
@@ -651,13 +728,55 @@ footer .footer-links a:hover { color: var(--accent); }
     </div>
 
     <div class="sub-section-title reveal">
+      <span>🧭 AI 产品实践</span>
+      <span class="accent-line"></span>
+    </div>
+    <div class="practice-grid section-gap-sm reveal">
+      <article class="practice-card">
+        <span class="practice-label">提示词大师 · 商业化 &amp; AI 产品</span>
+        <img src="prompt-master.png" alt="提示词大师产品截图" class="practice-screenshot" width="800" height="500" loading="lazy" decoding="async">
+        <h3>把“写词混乱”变成一条可复用的创作工作流</h3>
+        <p>面向 AIGC 视频创作者，完成需求分析、产品定义、PRD、Vibe Coding、上线跟进与数据复盘，搭建“导演规划—RAG 检索—文稿生成—10 维审核—文稿重写”多 Agent 流程。</p>
+        <div class="practice-flow" aria-label="提示词大师产品流程">
+          <span>导演规划</span><span>RAG 案例库 100+</span><span>文稿生成</span><span>10 维审核</span><span>文稿重写</span>
+        </div>
+        <strong class="practice-result">3.5 → 1.5 次抽卡</strong>
+      </article>
+      <div class="practice-stack">
+        <article class="practice-card compact">
+          <span class="practice-label">Mira 镜界 · AIGC 产品运营</span>
+          <h3>把数字人形象做成可交易、可管理的产品链路</h3>
+          <p>参与真人数字人形象授权交易平台从研发、迭代、内测到上线；搭建竞品雷达，监控 28+ 竞品与行业规范。</p>
+          <div class="practice-flow"><span>React / Vite / TS</span><span>28+ 竞品</span><span>60+ Demo</span></div>
+        </article>
+        <article class="practice-card compact">
+          <span class="practice-label">匣中镜 AI Vlogger Studio · 个人项目</span>
+          <img src="xiangzhongjing.png" alt="匣中镜 AI Vlogger Studio 截图" class="practice-screenshot" width="800" height="500" loading="lazy" decoding="async">
+          <h3>让文案从 2–3 小时进入 20 分钟工作流</h3>
+          <p>围绕项目管理、素材录入、AI 生成、在线编辑、版本保存与风格持续优化，服务 7 位博主创作。</p>
+          <div class="practice-flow"><span>内容产品</span><span>风格优化</span><span>78.24% 稳定性</span></div>
+        </article>
+      </div>
+    </div>
+    <div class="metric-rail section-gap-sm reveal" aria-label="AI 产品实践数据">
+      <div class="metric-cell"><span class="metric-value">+133.33%</span><span class="metric-label">定稿生产效率</span><span class="metric-note">提示词大师</span></div>
+      <div class="metric-cell"><span class="metric-value">100+</span><span class="metric-label">影视级提示词 RAG</span><span class="metric-note">案例沉淀</span></div>
+      <div class="metric-cell"><span class="metric-value">20 组</span><span class="metric-label">业务对照测试</span><span class="metric-note">效果迭代</span></div>
+      <div class="metric-cell"><span class="metric-value">70+</span><span class="metric-label">一周用户转化</span><span class="metric-note">商业化验证</span></div>
+    </div>
+
+    <div class="sub-section-title reveal">
       <span>📱 个人内容产品 · 抖音</span>
       <span class="accent-line"></span>
     </div>
     <div class="reveal section-gap-sm">
       <div class="dy-showcase">
-        <div class="dy-screenshot-wrap">
-          <img src="douyin-preview.png" alt="抖音主页 Yan子坤" class="dy-screenshot">
+        <div class="dy-screenshot-wrap pending">
+          <div class="asset-placeholder asset-placeholder-wide">
+            <span class="placeholder-mark">Yzk / Douyin</span>
+            <strong>最新抖音主页截图待补充</strong>
+            <small>当前文字数据已按最新简历更新，截图素材到位后替换</small>
+          </div>
         </div>
         <div class="dy-info-row">
           <div class="dy-text-info">
@@ -666,7 +785,7 @@ footer .footer-links a:hover { color: var(--accent); }
             <div class="dy-bio">校园生活向自媒体 IP · 从 0 到 1 内容产品打造 · 欢迎商务合作</div>
           </div>
           <div class="dy-stats">
-            <div class="dy-stat"><div class="num">4.7w+</div><div class="lbl">抖音粉丝</div></div>
+            <div class="dy-stat"><div class="num">12w+</div><div class="lbl">抖音粉丝</div></div>
             <div class="dy-stat"><div class="num">109.2w+</div><div class="lbl">总获赞</div></div>
             <div class="dy-stat"><div class="num">600+</div><div class="lbl">原创视频</div></div>
           </div>
@@ -678,11 +797,11 @@ footer .footer-links a:hover { color: var(--accent); }
           </div>
           <div class="dy-entry">
             <div class="entry-rank">📊</div>
-            <div class="entry-info"><div class="title">平均播放量级</div><div class="stats">2w – 10w+ / 条</div></div>
+            <div class="entry-info"><div class="title">平均播放量级</div><div class="stats">约 5w+ / 条</div></div>
           </div>
           <div class="dy-entry">
             <div class="entry-rank">⭐</div>
-            <div class="entry-info"><div class="title">抖音精选作品</div><div class="stats">近年 28 条作品入选</div></div>
+            <div class="entry-info"><div class="title">抖音精选作品</div><div class="stats">近年 26 条作品入选</div></div>
           </div>
           <div class="dy-entry">
             <div class="entry-rank">📺</div>
@@ -712,7 +831,7 @@ footer .footer-links a:hover { color: var(--accent); }
     <div class="grid-auto section-gap-sm reveal">
       <div class="card">
         <div class="card-img" style="background:none;">
-          <img src="aigc-cover.jpg" alt="狂沙战血魔" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <img src="aigc-cover.jpg" alt="《偏光而行》AI 影视先导片封面" width="1920" height="1080" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;">
           <div class="card-img-overlay"></div>
         </div>
         <div class="card-info">
@@ -721,18 +840,51 @@ footer .footer-links a:hover { color: var(--accent); }
           <a href="https://v.douyin.com/c1LjfhbDmns/" class="card-link" target="_blank" rel="noopener">查看作品 →</a>
         </div>
       </div>
+      <div class="card">
+        <div class="card-img">
+          <div class="asset-placeholder" style="aspect-ratio:16/9;min-height:0;">
+            <span class="placeholder-mark">🎬</span>
+            <strong>《神器系列：一念键》</strong>
+            <small>封面/视频截图待补充</small>
+          </div>
+        </div>
+        <div class="card-info">
+          <h4>AI 短片 · 《神器系列：一念键》</h4>
+          <p>AI 全流程科幻短片。围绕"一念键"设定展开叙事，探索 AI 影视叙事的更多可能性。</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img">
+          <div class="asset-placeholder" style="aspect-ratio:16/9;min-height:0;">
+            <span class="placeholder-mark">🎭</span>
+            <strong>真人数字人 Demo · 漫剧 SOP</strong>
+            <small>演示视频/流程图待补充</small>
+          </div>
+        </div>
+        <div class="card-info">
+          <h4>真人数字人 Demo · 漫剧 SOP</h4>
+          <p>AIGC 漫剧生产标准化管线：从真人拍摄到数字人合成，200+ 提示词模板驱动风格一致性 +90%，漫剧生产效率 +50%。</p>
+        </div>
+      </div>
     </div>
 
     
-    <div class="grid-auto section-gap-sm reveal">
-      
-    </div>
-
     <div class="sub-section-title reveal">
       <span>🤖 个人 AI Coding 项目</span>
       <span class="accent-line"></span>
     </div>
     <div class="grid-auto section-gap-sm reveal">
+      <div class="card coding-card-body">
+        <span class="cc-icon">🎬</span>
+        <h4>匣中镜 AI Vlogger Studio</h4>
+        <p>AI 驱动的 Vlog 创作工具。将初稿耗时从 2–3 小时压缩至约 20 分钟，流量稳定性达 78.24%，已服务 7 位博主。从脚本生成到成片剪辑的全流程 AI 辅助创作。</p>
+        <div class="cc-tags">
+          <span class="cc-tag">AI Vlog</span>
+          <span class="cc-tag">效率 9×</span>
+          <span class="cc-tag">7 位博主</span>
+          <span class="cc-tag">全流程</span>
+        </div>
+      </div>
       <div class="card coding-card-body">
         <span class="cc-icon">🖼️</span>
         <h4>批量调用的 AI 生图管线</h4>
@@ -798,6 +950,45 @@ footer .footer-links a:hover { color: var(--accent); }
       <h2>不误正业的 <span class="highlight">工科生</span></h2>
       <p>学术 · 项目 · 实干</p>
       <div class="section-divider"></div>
+    </div>
+
+    <div class="sub-section-title reveal">
+      <span>💼 实习经历</span>
+      <span class="accent-line"></span>
+    </div>
+    <div class="reveal section-gap-sm">
+      <div class="timeline">
+        <div class="timeline-item">
+          <h4>链星匣（成都）网络科技服务有限公司</h4>
+          <div class="tl-meta">
+          <div class="tl-tag">商业化 &amp; AI 产品经理</div>
+          <span class="tl-sep">·</span>
+          <div class="tl-date">2026.07 – 至今</div>
+        </div>
+          <p>负责"提示词大师"产品从 0 到 1 的规划与落地。设计多 Agent 工作流架构，构建 100+ 提示词 RAG 库，完成 20 组对照测试验证，将用户抽卡次数从 3.5 次降至 1.5 次，定稿生产效率提升 133.33%。</p>
+          <div class="tl-outcome">一周 70+ 用户转化 · 产品全流程闭环</div>
+        </div>
+        <div class="timeline-item">
+          <h4>浦光星奕</h4>
+          <div class="tl-meta">
+          <div class="tl-tag">AIGC 产品运营</div>
+          <span class="tl-sep">·</span>
+          <div class="tl-date">2026.05 – 2026.07</div>
+        </div>
+          <p>负责 Mira 镜界竞品雷达搭建，基于 React/Vite/TS 开发产品原型，系统性调研 28+ 竞品，输出 60+ Demo 与全流程 SOP 文档。</p>
+          <div class="tl-outcome">竞品雷达 · SOP 体系搭建</div>
+        </div>
+        <div class="timeline-item">
+          <h4>数影未来</h4>
+          <div class="tl-meta">
+          <div class="tl-tag">AIGC 内容运营</div>
+          <span class="tl-sep">·</span>
+          <div class="tl-date">2026.04 – 2026.05</div>
+        </div>
+          <p>构建 200+ 提示词模板库，将风格一致性提升 +90%、试错率降低 -40%、成本优化约 33%。推动漫剧生产管线标准化建设，实现生产效率 +50%。</p>
+          <div class="tl-outcome">200+ 模板 · 漫剧 SOP</div>
+        </div>
+      </div>
     </div>
 
     <div class="sub-section-title reveal">
@@ -927,6 +1118,33 @@ footer .footer-links a:hover { color: var(--accent); }
     </div>
 
     <div class="sub-section-title reveal">
+      <span>🎓 教育背景</span>
+      <span class="accent-line"></span>
+    </div>
+    <div class="reveal section-gap-sm">
+      <div class="timeline">
+        <div class="timeline-item">
+          <h4>浙江大学 · 资源与环境 · 硕士</h4>
+          <div class="tl-meta">
+          <div class="tl-tag">硕士研究生</div>
+          <span class="tl-sep">·</span>
+          <div class="tl-date">2024.09 – 2027.06</div>
+        </div>
+          <p>环境科学与工程方向，AI for Science 交叉研究。研究方向：深度学习水质预测、光催化制氢协同治理。</p>
+        </div>
+        <div class="timeline-item">
+          <h4>四川大学 · 环境工程 · 本科</h4>
+          <div class="tl-meta">
+          <div class="tl-tag">工学学士</div>
+          <span class="tl-sep">·</span>
+          <div class="tl-date">2020.09 – 2024.06</div>
+        </div>
+          <p>环境工程专业，辅修数据科学与智能技术。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-section-title reveal">
       <span>👥 学生工作</span>
       <span class="accent-line"></span>
     </div>
@@ -945,6 +1163,27 @@ footer .footer-links a:hover { color: var(--accent); }
             · 赛事筹办：主办校级"青创杯"青年创业就业能力挑战大赛，引导选手立足"双碳"政策思考企业治理文化建设。<br>
             · 资源链接："比亚迪×四川大学"活动主要负责人，协调就业办、比亚迪和校团委三方合作，推进"对接-策划-宣推-执行-复盘"全流程，于校内举办为期两天的汽车集市活动，独立完成线上20万+宣传量和集市80+动态人流量；同期还与机械学院等关联学院开展了双选会、座谈会，辅以多种文创打卡活动以开拓大学生的新能源尖端视野。
           </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-section-title reveal">
+      <span>🛠 工作技能</span>
+      <span class="accent-line"></span>
+    </div>
+    <div class="reveal section-gap-sm">
+      <div class="skill-groups">
+        <div class="skill-group">
+          <h4>AI 产品 &amp; 开发</h4>
+          <p>Codex · Claude Code · Trae · WorkBuddy<br>Python · PyTorch</p>
+        </div>
+        <div class="skill-group">
+          <h4>AI 工具 &amp; 创作</h4>
+          <p>Runninghub · Liblib.tv · 剪映<br>Premiere Pro · Photoshop</p>
+        </div>
+        <div class="skill-group">
+          <h4>关键能力</h4>
+          <p>多 Agent 工作流设计 · RAG 构建<br>产品全流程 · AIGC 内容管线</p>
         </div>
       </div>
     </div>
@@ -983,15 +1222,25 @@ footer .footer-links a:hover { color: var(--accent); }
         <p>老子</p>
       </div>
     </div>
+
+    <div class="reveal" style="text-align:center;margin-top:20px;">
+      <div class="asset-placeholder" style="max-width:540px;margin:0 auto;min-height:120px;">
+        <span class="placeholder-mark">📝</span>
+        <strong>阅读笔记待补充</strong>
+        <small>后续将更新读书心得与摘录</small>
+      </div>
+    </div>
   </div>
 </section>
 
 <footer>
-  <p>© 2026 闫子奇 · 不务正业的工科生 · 跨界创作者</p>
-  <div class="footer-links">
-    <a href="https://v.douyin.com/PHjxAmv0urs/" target="_blank" rel="noopener">抖音 @Yan子坤</a>
+  <div class="footer-links" style="margin-bottom:10px;justify-content:center;">
     <a href="mailto:scybyzk@163.com">scybyzk@163.com</a>
+    <span style="color:var(--text3);font-size:0.7rem;">·</span>
+    <a href="https://v.douyin.com/PHjxAmv0urs/" target="_blank" rel="noopener">抖音 @Yan子坤</a>
   </div>
+  <p>© 2026 闫子奇 · 不务正业的工科生 · 跨界创作者</p>
+  <p style="font-size:0.7rem;color:var(--text3);margin-top:4px;">最后更新：2026.08.06</p>
 </footer>
 
 <script>
