@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>闫子奇｜AI 产品与跨界创作作品集</title>
 <meta name="description" content="闫子奇（Yan子坤）的个人网站：AI 产品、内容创作、AIGC 实验与科研实践。">
 <meta name="theme-color" content="#08080c">
 <meta property="og:title" content="闫子奇 | 不务正业的工科生">
@@ -555,7 +556,7 @@ nav .nav-links a:hover, nav .nav-links a.active { color: var(--text); background
 .coding-card-body { padding: 24px; height: 100%; display: flex; flex-direction: column; }
 .coding-card-body .cc-icon { font-size: 1.8rem; margin-bottom: 14px; display: block; }
 .coding-card-body h4 { font-size: 1rem; font-weight: 600; margin-bottom: 8px; }
-.coding-card-body p { font-size: 0.82rem; color: var(--text2); line-height: 1.6; }
+.coding-card-body p { font-size: 0.82rem; color: var(--text2); line-height: 1.7; text-wrap: pretty; }
 .coding-card-body .cc-tags { display: flex; gap: 6px; margin-top: 14px; flex-wrap: wrap; }
 .coding-card-body .cc-tag {
   padding: 3px 10px; border-radius: 4px; font-size: 0.68rem;
@@ -563,13 +564,52 @@ nav .nav-links a:hover, nav .nav-links a.active { color: var(--text); background
   border: 1px solid rgba(212,165,116,0.2); font-weight: 450;
 }
 .coding-card-body .cc-thumb {
-  width: 100%; height: auto; border-radius: 6px; margin-bottom: 16px;
+  width: 100%; height: auto; border-radius: 8px;
   display: block; object-fit: cover;
 }
-.cc-btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
+.coding-project-list { display: grid; grid-template-columns: 1fr; gap: 20px; }
+.coding-card-landscape {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  gap: clamp(24px, 4vw, 52px);
+  align-items: center;
+  padding: clamp(24px, 4vw, 40px);
+}
+.coding-card-landscape:nth-child(3) {
+  background:
+    radial-gradient(circle at 18% 24%, rgba(201,169,98,0.1), transparent 36%),
+    rgba(18,17,22,0.86);
+}
+.coding-card-landscape .cc-media { min-width: 0; }
+.coding-card-landscape .cc-screen-pair {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px;
+  align-items: end;
+}
+.coding-card-landscape .cc-screen {
+  width: 100%; height: auto; max-height: 500px; aspect-ratio: 1206 / 2420;
+  display: block; object-fit: contain; object-position: center bottom;
+  border-radius: 12px;
+  border: 1px solid rgba(212,165,116,0.16);
+  box-shadow: 0 18px 45px rgba(5,4,7,0.38);
+}
+.coding-card-landscape .cc-content {
+  min-width: 0; align-self: stretch;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.coding-card-landscape .cc-kicker {
+  display: block; margin-bottom: 8px;
+  color: var(--accent2); font: 600 0.68rem/1.4 'Space Grotesk', sans-serif;
+  letter-spacing: 0.12em; text-transform: uppercase;
+}
+.coding-card-landscape h4 { font-size: clamp(1.25rem, 2.6vw, 1.75rem); }
+.coding-card-landscape p { font-size: 0.88rem; line-height: 1.85; }
+.cc-btn-row {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  margin-top: auto; padding-top: 16px;
+}
 .coding-card-body .cc-btn {
   display: inline-flex; align-items: center; gap: 6px;
-  margin-top: 16px; padding: 8px 18px; border-radius: 6px;
+  padding: 8px 18px; border-radius: 6px;
   background: var(--accent); color: #08080c;
   text-decoration: none; font-size: 0.8rem; font-weight: 500;
   transition: all 0.3s ease;
@@ -577,6 +617,14 @@ nav .nav-links a:hover, nav .nav-links a.active { color: var(--text); background
 }
 .coding-card-body .cc-btn:hover {
   background: #c9a962; transform: translateY(-1px);
+}
+.coding-card-body .cc-btn:active { transform: translateY(1px) scale(0.98); }
+.coding-card-body .cc-btn.secondary {
+  color: var(--accent); background: transparent;
+  border: 1px solid rgba(212,165,116,0.35);
+}
+.coding-card-body .cc-btn.secondary:hover {
+  color: #08080c; background: var(--accent); border-color: var(--accent);
 }
 
 
@@ -616,6 +664,7 @@ footer .footer-links a:hover { color: var(--accent); }
   .metric-rail, .experience-grid, .skill-groups { grid-template-columns: repeat(2, 1fr); }
   .practice-grid { grid-template-columns: 1fr; }
   .grid-2col { grid-template-columns: 1fr; }
+  .coding-card-landscape { grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); }
 }
 @media (max-width: 768px) {
   nav { padding: 0 20px; }
@@ -640,6 +689,9 @@ footer .footer-links a:hover { color: var(--accent); }
   .practice-card { min-height: 240px; padding: 22px; }
   .practice-result { position: static; display: block; margin-top: 18px; }
   .sub-section-title { align-items: flex-start; }
+  .coding-card-landscape { grid-template-columns: 1fr; gap: 24px; }
+  .coding-card-landscape .cc-screen-pair { gap: 8px; }
+  .coding-card-landscape .cc-screen { max-height: none; border-radius: 8px; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -827,33 +879,63 @@ footer .footer-links a:hover { color: var(--accent); }
       <span>AI Coding 项目</span>
       <span class="accent-line"></span>
     </div>
-    <div class="grid-auto section-gap-sm reveal">
-      <div class="card coding-card-body">
-        <img src="prompt-master.jpg?v=20260806" alt="提示词大师产品截图" class="cc-thumb" width="800" height="500" loading="lazy" decoding="async">
-<h4>提示词大师 <span style="font-weight:400;font-size:0.75rem;color:var(--accent2)">（已上线，同时已开源轻量化 Skill）</span></h4>
-        <p>面向 AIGC 视频创作者「写词混乱、需求丢失、成片不稳定」的真实痛点，设计「提示词大师」提示词生成系统，搭建「导演规划-RAG 案例检索-文稿生成-10 维质量审核-文稿重写」多 Agent 工作流，完成从需求分析、方案设计、PRD 写作、Vibe Coding 到上线跟进与数据复盘的完整闭环；积累 100+ 条影视级视频提示词 RAG 库沉淀，推动 20 组对照测试，抽卡次数由 3.5 次降至 1.5 次，生产效率提升 133.33%。</p>
-        <div class="cc-tags">
-          <span class="cc-tag">多 Agent 工作流</span>
-          <span class="cc-tag">RAG 案例库 100+</span>
-          <span class="cc-tag">10 维审片</span>
-          <span class="cc-tag">效率提升 133%</span>
+    <div class="coding-project-list section-gap-sm reveal">
+      <article class="card coding-card-body coding-card-landscape">
+        <div class="cc-media">
+          <img src="prompt-master.jpg?v=20260806" alt="提示词大师产品截图" class="cc-thumb" width="2886" height="1532" loading="lazy" decoding="async">
         </div>
-        <div class="cc-btn-row">
-          <a href="https://promptmaster.novastarbox.com/login?returnTo=%2Fapp" class="cc-btn" target="_blank" rel="noopener">访问提示词大师 ↗</a>
-          <a href="https://github.com/McAuliffe-yzk/cinematic-prompt-master-skill" class="cc-btn" target="_blank" rel="noopener">GitHub · 开源 Skill ↗</a>
+        <div class="cc-content">
+          <span class="cc-kicker">AIGC Video · Agent Workflow</span>
+          <h4>提示词大师 <span style="font-weight:400;font-size:0.75rem;color:var(--accent2)">（已上线，同时已开源轻量化 Skill）</span></h4>
+          <p>面向 AIGC 视频创作者「写词混乱、需求丢失、成片不稳定」的真实痛点，设计「提示词大师」提示词生成系统，搭建「导演规划-RAG 案例检索-文稿生成-10 维质量审核-文稿重写」多 Agent 工作流，完成从需求分析、方案设计、PRD 写作、Vibe Coding 到上线跟进与数据复盘的完整闭环；积累 100+ 条影视级视频提示词 RAG 库沉淀，推动 20 组对照测试，抽卡次数由 3.5 次降至 1.5 次，生产效率提升 133.33%。</p>
+          <div class="cc-tags">
+            <span class="cc-tag">多 Agent 工作流</span>
+            <span class="cc-tag">RAG 案例库 100+</span>
+            <span class="cc-tag">10 维审片</span>
+            <span class="cc-tag">效率提升 133%</span>
+          </div>
+          <div class="cc-btn-row">
+            <a href="https://promptmaster.novastarbox.com/login?returnTo=%2Fapp" class="cc-btn" target="_blank" rel="noopener">访问提示词大师 ↗</a>
+            <a href="https://github.com/McAuliffe-yzk/cinematic-prompt-master-skill" class="cc-btn secondary" target="_blank" rel="noopener">GitHub · 开源 Skill ↗</a>
+          </div>
         </div>
-      </div>
-      <div class="card coding-card-body">
-        <img src="xiangzhongjing.jpg?v=20260806" alt="匣中镜 AI Vlogger Studio 截图" class="cc-thumb" width="800" height="500" loading="lazy" decoding="async">
-        <h4>匣中镜 AI Vlogger Studio</h4>
-        <p>从自媒体创作者「文案产出慢、AI 写作不像自己、灵感与项目管理分散」的痛点入手，基于 Codex 设计和落地「项目管理→素材录入→AI 生成→在线编辑→版本保存→风格持续优化」产品。初稿产出时间从平均 2-3 小时压缩至 20 分钟，内容流量稳定性达 78.24%，服务 7 位博主创作。</p>
-        <div class="cc-tags">
-          <span class="cc-tag">写作 Skill</span>
-          <span class="cc-tag">产出提速 6-9x</span>
-          <span class="cc-tag">流量稳定性 78%</span>
-          <span class="cc-tag">服务 7 位博主</span>
+      </article>
+      <article class="card coding-card-body coding-card-landscape">
+        <div class="cc-media">
+          <img src="xiangzhongjing.jpg?v=20260815" alt="匣中镜 AI Vlogger Studio 创作台项目管理界面" class="cc-thumb" width="2940" height="1510" loading="lazy" decoding="async">
         </div>
-      </div>
+        <div class="cc-content">
+          <span class="cc-kicker">Personal Agent · Creator Workflow</span>
+          <h4>匣中镜 AI Vlogger Studio</h4>
+          <p>「匣中镜」是一款面向个人创作者的本地优先 Personal Agent。它以大模型与结构化 Skill 为核心，将历史文稿蒸馏为可审核、可迭代的「个人创作 DNA」，再结合真实素材、叙事编排与精神书库原文，打通从选题与素材整理，到风格化文案生成、金句植入与发布沉淀的创作闭环。「镜中人」支持用户与被蒸馏的自己对话；「书中人」则基于个人书库，提供有出处、可核验的角色化交流。初稿产出时间由平均 2–3 小时缩短至 20 分钟，内容流量稳定性达 78.24%，已服务 7 位博主创作。</p>
+          <div class="cc-tags">
+            <span class="cc-tag">本地优先 Agent</span>
+            <span class="cc-tag">个人创作 DNA</span>
+            <span class="cc-tag">镜中人 · 书中人</span>
+            <span class="cc-tag">初稿 20 分钟</span>
+          </div>
+          <div class="cc-btn-row">
+            <a href="https://github.com/McAuliffe-yzk/Xiazhongjing" class="cc-btn secondary" target="_blank" rel="noopener">GitHub · 查看项目 ↗</a>
+          </div>
+        </div>
+      </article>
+      <article class="card coding-card-body coding-card-landscape">
+        <div class="cc-media cc-screen-pair" aria-label="修行录产品实机界面">
+          <img src="xiuxinglu-paths.jpg?v=20260910" alt="修行录的修炼路径与个人成长界面" class="cc-screen" width="1206" height="2420" loading="lazy" decoding="async">
+          <img src="xiuxinglu-practice.jpg?v=20260910" alt="修行录的日常功课与修行记录界面" class="cc-screen" width="1206" height="2374" loading="lazy" decoding="async">
+        </div>
+        <div class="cc-content">
+          <span class="cc-kicker">Personal Growth · AI Coding</span>
+          <h4>修行录</h4>
+          <p>《修行录》是一款以国风修行体系为核心的个人成长与自律应用。用户可在书生、剑修、武夫三条修炼路径中择道，通过计时完成读书、主修课题、运动与散步等日常功课，并借助洞察记录、养魂打卡、竹简待办和修行记录持续积累修为。产品将修为、境界晋升、道誓、身份名片与多路同修机制融为一体，把抽象的长期坚持转化为清晰、可视、可追踪的成长反馈。</p>
+          <div class="cc-tags">
+            <span class="cc-tag">三条修炼路径</span>
+            <span class="cc-tag">计时功课</span>
+            <span class="cc-tag">境界晋升</span>
+            <span class="cc-tag">多路同修</span>
+          </div>
+        </div>
+      </article>
     </div>
 
     <div class="sub-section-title reveal">
@@ -1121,7 +1203,7 @@ footer .footer-links a:hover { color: var(--accent); }
     <a href="https://v.douyin.com/PHjxAmv0urs/" target="_blank" rel="noopener">抖音 @Yan子坤</a>
   </div>
   <p>© 2026 闫子奇 · 不务正业的工科生 · 跨界创作者</p>
-  <p style="font-size:0.7rem;color:var(--text3);margin-top:4px;">最后更新：2026.08.06</p>
+  <p style="font-size:0.7rem;color:var(--text3);margin-top:4px;">最后更新：2026.09.10</p>
 </footer>
 
 <script>
